@@ -3,7 +3,10 @@
     {
       "name": "windows-gcc-x86",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",
+        "C:/Users/ClaytonSantos/Documents/GitHub/PDS-II-PROJECT/tpapp/src",
+        "C:/Users/ClaytonSantos/Documents/GitHub/PDS-II-PROJECT/tpapp/include"
+
       ],
       "compilerPath": "C:/MinGW/bin/gcc.exe",
       "cStandard": "${default}",
