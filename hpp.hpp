@@ -5,7 +5,7 @@
 //JOao Pimentel
 class Jogo {
 public:
-    int jogo_id; 
+    int jogo_id;
     float valor;
     std::string nome;
     std::string desenvolvedora;
@@ -52,7 +52,7 @@ class Biblioteca {
 public:
     std::vector<Jogo> jogos;
     std::vector<Jogo> favoritos;
-    
+
     void buscar_jogo();
     void adicionar_jogo();
     void adicionar_favoritos();
