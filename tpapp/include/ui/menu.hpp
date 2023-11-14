@@ -5,7 +5,7 @@
 #include <string>
 
 
-namespace::tpapp::ui{
+namespace tpapp::ui {
 class Menu {
 public:
     virtual ~Menu() = default;

@@ -1,7 +1,7 @@
 #include "ui/menu.hpp"
 #include<iostream>
 
-namespace::tpapp::ui {
+namespace tpapp::ui {
 
 void Menu::render() const {
     std::string border(_title.size() + 5, '=');
@@ -13,5 +13,5 @@ void Menu::render() const {
         std::cout << opt << '\n';
     }
     std::cout << std::endl << ">Opção: ";
-}
+};
 }

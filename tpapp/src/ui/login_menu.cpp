@@ -1,5 +1,8 @@
 #include "ui/login_menu.hpp"
-//#include "usuario.hpp"
+
+#include "model/usuario.hpp"
+#include "model/desenvolvedor.hpp"
+
 
 #include <iostream>
 #include <string>
@@ -7,9 +10,9 @@
 namespace tpapp::ui {
 LoginMenu::LoginMenu() {
     _title = "Menu de Autentificação";
-    _option.push_back("1 - Entrar");
-    _option.push_back("2 - Criar Usuário");
-    _optin.push_back("3 - Criar Usuário Desenvolvedor");
+    _options.push_back("1 - Entrar");
+    _options.push_back("2 - Criar Usuário");
+    _options.push_back("3 - Criar Usuário Desenvolvedor");
 }
 
 Menu *LoginMenu::next(unsigned option) {
@@ -31,7 +34,7 @@ Menu *LoginMenu::next(unsigned option) {
 
     switch(option) {
         case 1: {
-            std::email;
+            std::string email;
             ler_autenticacao(email);
 
             std::cout << "Logando: " << email << std::endl;
@@ -48,15 +51,14 @@ Menu *LoginMenu::next(unsigned option) {
             model::InfoPessoal info;
             ler_info_pessoal(info);
 
-            model::Usuario usuario(usuario_login, email, info);
+            model::Usuario usuario(email, info);
             std::cout << "Salvando Usuário: " << usuario.to_string() << std::endl;
             break;
         }
         case 3: {
-            model::Desenvolvedor dev_aut;
-
+            unsigned desenvolvedora_id;
             std::cout << "> Desenvolvedora ID: ";
-            std::cin >> dev_aut.desenvolvedora_id;
+            std::cin >> desenvolvedora_id;
 
             std::string email;
             ler_autenticacao(email);
@@ -64,7 +66,7 @@ Menu *LoginMenu::next(unsigned option) {
             model::InfoPessoal info;
             ler_info_pessoal(info);
 
-            model>>Desenvolvedor dev(dev_aut, email, info);
+            model::Desenvolvedor dev(desenvolvedora_id, email, info);
             std::cout << "Salvando Usuário Desenvolvedor: " << dev.to_string() << std::endl;
             break;
         }

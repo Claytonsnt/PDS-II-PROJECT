@@ -3,7 +3,7 @@
 #include "ui/menu.hpp"
 #include<string>
 
-namespace::tpapp::ui {
+namespace tpapp::ui {
 class LoginMenu: public Menu {
 public:
     LoginMenu();
