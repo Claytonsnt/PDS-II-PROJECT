@@ -2,9 +2,10 @@
 #include <vector>
 #include <string>
 
+//JOao Pimentel
 class Jogo {
 public:
-    int jogo_id; 
+    int jogo_id;
     float valor;
     std::string nome;
     std::string desenvolvedora;
@@ -12,6 +13,7 @@ public:
     std::string genero;
 };
 
+//JOao Pimentel
 class Desenvolvedor {
 public:
     int desenvolvedora_id;
@@ -21,6 +23,7 @@ public:
     void atualizar_jogo();
 };
 
+//JOao Pimentel
 class Usuario {
 public:
     int usuario_id;
@@ -30,6 +33,7 @@ public:
     Desenvolvedor desenvolvedor;
 };
 
+//JOão Gonçalves
 class Avaliacao {
 public:
     float nota;
@@ -48,7 +52,7 @@ class Biblioteca {
 public:
     std::vector<Jogo> jogos;
     std::vector<Jogo> favoritos;
-    
+
     void buscar_jogo();
     void adicionar_jogo();
     void adicionar_favoritos();
@@ -68,17 +72,19 @@ public:
     void remover_carrinho();
 };
 
+//João Gonçalves
 class Transacao {
 public:
-    std::string tipo;
     float valor;
+    std::string tipo;
     std::string data;
     std::string forma_pagamento;
-
     Loja carrinho_de_compras;
+    
     void comprar();
 };
 
+//JOão Gonçalves
 class Carteira {
 public:
     float saldo;
