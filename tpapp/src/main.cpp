@@ -11,4 +11,4 @@ int main() {
 
     ui::Menu *menu = login.next(option);
     return 0;
-}
+};
