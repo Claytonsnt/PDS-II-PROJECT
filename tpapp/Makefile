@@ -28,7 +28,7 @@ $(BIN_DIR)/$(PROJECT_NAME): $(addprefix $(BUILD_DIR)/,$(OBJ_FILES))
 	@mkdir -p $(BIN_DIR)
 	@$(CXX) $(CXXFLAGS) $^ -o $@ -L $(MAIL_LIB_PATH) -l mail
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(BUILD_DIR)/$(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo "🏛️ Building $< ..."
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CXXFLAGS) -I $(MAIL_LIB_INC_DIR) -I $(INC_DIR) -MMD -MP -c $< -o $@
