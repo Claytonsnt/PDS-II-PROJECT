@@ -1,7 +1,10 @@
 #include "ui/login_menu.hpp"
+#include "ui/biblioteca_menu.hpp"
 
 #include "model/usuario.hpp"
 #include "model/desenvolvedor.hpp"
+
+
 
 
 #include <iostream>
@@ -38,7 +41,8 @@ Menu *LoginMenu::next(unsigned option) {
             ler_autenticacao(email);
 
             std::cout << "Logando: " << email << std::endl;
-            break;
+            //return new Biblioteca(usuario);
+
         }
         case 2: {
             std::string usuario_login;
@@ -53,7 +57,7 @@ Menu *LoginMenu::next(unsigned option) {
 
             model::Usuario usuario(email, info);
             std::cout << "Salvando Usuário: " << usuario.to_string() << std::endl;
-            break;
+            return new Biblioteca(usuario);
         }
         case 3: {
             unsigned desenvolvedora_id;

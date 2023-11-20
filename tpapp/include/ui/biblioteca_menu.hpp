@@ -14,11 +14,10 @@ class Biblioteca : public Menu{
 public:
     Biblioteca(model::Usuario const &usuario);
     Menu *next(unsigned option) override;
-    std::vector<Jogo> jogos();
-    std::vector<Jogo> favoritos();
+    
 private:
     model::Usuario const &_usuario;
-    std::vector<Jogo> _jogos;
-    std::vector<Jogo> _favoritos;
+    std::vector<service::Jogo> _jogos;
+    std::vector<service::Jogo> _favoritos;  
 };
 }
