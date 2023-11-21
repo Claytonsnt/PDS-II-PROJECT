@@ -14,8 +14,9 @@ unsigned idade;
 
 class Usuario {
 public:
-    Usuario(std::string email, InfoPessoal info);
+    Usuario(std::string usuario_login, std::string email, InfoPessoal info);
     int id_usuario;
+    std::string usuario_login() const;
     std::string email() const;
     std::string nome() const;
     unsigned idade() const;
@@ -23,6 +24,7 @@ public:
     std::string to_string() const;
 
 private:
+    std::string _usuario_login;
     std::string _email;
     InfoPessoal _info;
 };

@@ -1,7 +1,11 @@
 #include "ui/login_menu.hpp"
+#include "ui/biblioteca_menu.hpp"
 
 #include "model/usuario.hpp"
 #include "model/desenvolvedor.hpp"
+#include "repository/usuarios.hpp"
+
+
 
 
 #include <iostream>
@@ -36,9 +40,13 @@ Menu *LoginMenu::next(unsigned option) {
         case 1: {
             std::string email;
             ler_autenticacao(email);
-
+            std::string nome_arquivo = "repositorio_usuarios";
+            repository::Usuarios repositorio(nome_arquivo);
             std::cout << "Logando: " << email << std::endl;
-            break;
+            if (repositorio.verificarUsuario(email)) {
+                model::Usuario usuario = repositorio.obterUsuario(email);
+            }
+
         }
         case 2: {
             std::string usuario_login;
@@ -51,14 +59,23 @@ Menu *LoginMenu::next(unsigned option) {
             model::InfoPessoal info;
             ler_info_pessoal(info);
 
-            model::Usuario usuario(email, info);
+            model::Usuario usuario(usuario_login, email, info);
+
+            std::string nome_arquivo = "repositorio_usuarios";
+            repository::Usuarios repositorio(nome_arquivo);
+            repositorio.adicionarUsuario(usuario);
+            
             std::cout << "Salvando Usuário: " << usuario.to_string() << std::endl;
-            break;
+            return new Biblioteca(usuario);
         }
         case 3: {
             unsigned desenvolvedora_id;
             std::cout << "> Desenvolvedora ID: ";
             std::cin >> desenvolvedora_id;
+
+            std::string usuario_login;
+            std::cout << "> Digite o nome de usuário desejado: ";
+            std::cin >> usuario_login;
 
             std::string email;
             ler_autenticacao(email);
@@ -66,7 +83,7 @@ Menu *LoginMenu::next(unsigned option) {
             model::InfoPessoal info;
             ler_info_pessoal(info);
 
-            model::Desenvolvedor dev(desenvolvedora_id, email, info);
+            model::Desenvolvedor dev(usuario_login, desenvolvedora_id, email, info);
             std::cout << "Salvando Usuário Desenvolvedor: " << dev.to_string() << std::endl;
             break;
         }
