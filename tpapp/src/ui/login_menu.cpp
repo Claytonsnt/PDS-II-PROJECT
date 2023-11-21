@@ -32,23 +32,24 @@ Menu *LoginMenu::next(unsigned option) {
         std::cout << "> Idade: ";
         std::cin >> info.idade;
     };
-
+    while(option != 0) {
     switch(option) {
         case 1: {
             std::string email;
             ler_autenticacao(email);
-
+            
             std::string nome_arquivo = "repositorio_usuarios";
             repository::Usuarios repositorio(nome_arquivo);
 
-            std::cout << "Logando: " << email << std::endl;
+            std::cout << "Verificando usuário: " << email << std::endl;
 
-            if (repositorio.verificarUsuario(email)) {
+            if (repositorio.verificarUsuarioEmail(email)) {
                 std::cout << "Usuário verificado." << std::endl;
                 model::Usuario usuario = repositorio.obterUsuario(email);
                 return new Biblioteca(usuario);
             } else {
                 std::cout << "Usuário não encontrado." << std::endl;
+                return new LoginMenu();
             }
             break;
         
@@ -61,13 +62,21 @@ Menu *LoginMenu::next(unsigned option) {
             std::string email;
             ler_autenticacao(email);
 
+            std::string nome_arquivo = "repositorio_usuarios";
+            repository::Usuarios repositorio(nome_arquivo);
+
+            if (repositorio.verificarUsuarioEmail(email)) {
+                std::cout << "E-mail já utilizado." << std::endl;
+                break;
+            } else {
+                std::cout << "E-mail disponível." << std::endl;
+            }
+
             model::InfoPessoal info;
             ler_info_pessoal(info);
 
             model::Usuario usuario(usuario_login, email, info);
-
-            std::string nome_arquivo = "repositorio_usuarios";
-            repository::Usuarios repositorio(nome_arquivo);
+            
             repositorio.adicionarUsuario(usuario);
             
             std::cout << "Salvando Usuário: " << usuario.to_string() << std::endl;
@@ -93,6 +102,7 @@ Menu *LoginMenu::next(unsigned option) {
             break;
         }
     }
+}
 
     return nullptr;
 }

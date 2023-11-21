@@ -9,7 +9,7 @@ Usuarios::Usuarios(const std::string& nome_arquivo): _arquivo_usuarios(nome_arqu
     carregarUsuarios();
 } 
 
-bool Usuarios::verificarUsuario(const std::string& email) const {
+bool Usuarios::verificarUsuarioEmail(const std::string& email) const {
     for (const auto& usuario : _usuarios) {
         if (usuario.email() == email) {
             return true;

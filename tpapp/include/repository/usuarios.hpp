@@ -11,7 +11,7 @@ class Usuarios {
 public:
     Usuarios(const std::string& nome_arquivo);
 
-    bool verificarUsuario(const std::string& email) const;
+    bool verificarUsuarioEmail(const std::string& email) const;
     void adicionarUsuario(const model::Usuario& usuario);
     model::Usuario obterUsuario(const std::string& email) const;
 
