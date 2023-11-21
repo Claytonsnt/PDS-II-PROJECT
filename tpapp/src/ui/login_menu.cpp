@@ -5,9 +5,6 @@
 #include "model/desenvolvedor.hpp"
 #include "repository/usuarios.hpp"
 
-
-
-
 #include <iostream>
 #include <string>
 
@@ -40,13 +37,21 @@ Menu *LoginMenu::next(unsigned option) {
         case 1: {
             std::string email;
             ler_autenticacao(email);
+
             std::string nome_arquivo = "repositorio_usuarios";
             repository::Usuarios repositorio(nome_arquivo);
-            std::cout << "Logando: " << email << std::endl;
-            if (repositorio.verificarUsuario(email)) {
-                model::Usuario usuario = repositorio.obterUsuario(email);
-            }
 
+            std::cout << "Logando: " << email << std::endl;
+
+            if (repositorio.verificarUsuario(email)) {
+                std::cout << "Usuário verificado." << std::endl;
+                model::Usuario usuario = repositorio.obterUsuario(email);
+                return new Biblioteca(usuario);
+            } else {
+                std::cout << "Usuário não encontrado." << std::endl;
+            }
+            break;
+        
         }
         case 2: {
             std::string usuario_login;
@@ -88,6 +93,7 @@ Menu *LoginMenu::next(unsigned option) {
             break;
         }
     }
+
     return nullptr;
 }
 }

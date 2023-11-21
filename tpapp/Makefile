@@ -1,7 +1,7 @@
 PROJECT_NAME := tpapp
 
 CXX := g++
-CXXFLAGS := -std=c++17 -Wall
+CXXFLAGS := -std=c++17 -Wall -g
 
 #MAIL_LIB_INC_DIR := ../mail-lib/include
 #MAIL_LIB_PATH := ../mail-lib/build
