@@ -50,7 +50,7 @@ void Usuarios::carregarUsuarios() {
         }
         arquivo.close();
     } else {
-        std::cerr << " ERRO ao abrir o arquivo de Usuários." << std::endl;
+        std::cerr << " Erro ao abrir o arquivo de Usuários." << std::endl;
     }
 }
 
