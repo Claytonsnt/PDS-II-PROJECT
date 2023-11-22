@@ -3,7 +3,7 @@
 
 namespace tpapp::model {
 Desenvolvedor::Desenvolvedor(std::string usuario_login, unsigned desenvolvedora_id, std::string email, InfoPessoal info):
-                Usuario(usuario_login, email, info), _desenvolvedora_id(desenvolvedora_id) {}
+                Usuario(usuario_login, email, info, true), _desenvolvedora_id(desenvolvedora_id) {}
 
 unsigned Desenvolvedor::desenvolvedora_id() const {
     return _desenvolvedora_id;

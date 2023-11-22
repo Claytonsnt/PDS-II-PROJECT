@@ -1,5 +1,5 @@
 #include "ui/biblioteca_menu.hpp"
-
+#include "service/jogo.hpp"
 #include "model/usuario.hpp"
 
 #include <iostream>

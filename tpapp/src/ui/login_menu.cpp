@@ -1,5 +1,6 @@
 #include "ui/login_menu.hpp"
 #include "ui/biblioteca_menu.hpp"
+#include "ui/dev_menu.hpp"
 
 #include "model/usuario.hpp"
 #include "model/desenvolvedor.hpp"
@@ -46,6 +47,12 @@ Menu *LoginMenu::next(unsigned option) {
             if (repositorio.verificarUsuarioEmail(email)) {
                 std::cout << "Usuário verificado." << std::endl;
                 model::Usuario usuario = repositorio.obterUsuario(email);
+                if (usuario.desenvolvedor() == true) {
+                    //criar repositorio dev
+                    //model::Desenvolvedor dev = repositorio_dev.obterUsuario(email);
+
+                    //return new DevMenu();
+                }
                 return new Biblioteca(usuario);
             } else {
                 std::cout << "Usuário não encontrado." << std::endl;
@@ -55,6 +62,8 @@ Menu *LoginMenu::next(unsigned option) {
         
         }
         case 2: {
+
+            bool desenvolvedor = false;
             std::string usuario_login;
             std::cout << "> Digite o nome de usuário desejado: ";
             std::cin >> usuario_login;
@@ -75,7 +84,7 @@ Menu *LoginMenu::next(unsigned option) {
             model::InfoPessoal info;
             ler_info_pessoal(info);
 
-            model::Usuario usuario(usuario_login, email, info);
+            model::Usuario usuario(usuario_login, email, info, desenvolvedor);
             
             repositorio.adicionarUsuario(usuario);
             
@@ -99,7 +108,7 @@ Menu *LoginMenu::next(unsigned option) {
 
             model::Desenvolvedor dev(usuario_login, desenvolvedora_id, email, info);
             std::cout << "Salvando Usuário Desenvolvedor: " << dev.to_string() << std::endl;
-            break;
+            return new DevMenu(dev);
         }
     }
 }
