@@ -15,7 +15,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     _options.push_back("4 - Visualizar Favoritos");
 }
 
-    Menu *Biblioteca::next(unsigned option) {
+    Menu *Biblioteca::next(unsigned option) { //tentar passar o usuario aqui
         while(option != 0){
             switch(option) {
             case 1: {
@@ -78,7 +78,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
         if (arquivo.is_open()) {
             for (const auto& jogo : _jogos) {
-                arquivo << jogo.jogo_id() << ',' << jogo.nome() << '\n';
+                arquivo << jogo.jogo_id() << ',' << jogo.nome() << ',' << jogo.desenvolvedora() << ',' << jogo.genero() << ',' << jogo.data_lacamento() << ',' << jogo.valor() << '\n';
             }
             arquivo.close();
             std::cout << "> Dados dos jogos salvos em " << nome_arquivo << std::endl;
@@ -93,13 +93,14 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
         if (arquivo.is_open()) {
             _jogos.clear();
 
-            int id;
-            std::string nome;
+            int jogo_id;
+            std::string nome, desenvolvedora_id, genero, data_lancamento;
+            double valor;
 
-            while (arquivo >> id >> std::ws && std::getline(arquivo, nome)) {
-                _jogos.emplace_back(id, nome);
+            while (arquivo >> jogo_id >> nome >> desenvolvedora_id >> genero >> data_lancamento >> valor) {
+                service::Jogo jogo(jogo_id, nome, desenvolvedora_id, genero, data_lancamento, valor);
+                _jogos.push_back(jogo);
             }
-
             arquivo.close();
             std::cout << "> Dados dos jogos carregados de " << nome_arquivo << std::endl;
         } else {

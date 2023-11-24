@@ -1,11 +1,13 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 
 namespace tpapp:: service {
 class Jogo {
 public:
-    Jogo(const int jogo_id, const std::string nome, std::string desenvolvedora,
-         const std::string genero, const std::string data_lacamento, const double valor);
+    Jogo(const int jogo_id, const std::string nome, std::string desenvolvedora, const std::string genero, const std::string data_lacamento, const double valor);
+
     int jogo_id() const;
     std::string nome() const;
     std::string desenvolvedora() const;

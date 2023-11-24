@@ -4,10 +4,8 @@
 #include "ui/dev_menu.hpp"
 #include "ui/biblioteca_menu.hpp"
 
-#include "service/jogo.hpp"
-
 #include "repository/usuarios.hpp"
-
+#include "repository/jogos.hpp"
 
 #include <iostream>
 #include <string>
@@ -27,7 +25,8 @@ _options.push_back("5 - Loja");
             switch(option) {
                 case 1: {
 
-                    int jogo_id;
+                    //int jogo_id;
+                    // buscar os jogos no repositorio de jogos ler todos os jogos e contar a quant e adicionar o jogos_id 
 
 
                     std::string nome;
@@ -50,7 +49,7 @@ _options.push_back("5 - Loja");
                     std::cout << "Digite o preço do jogo em reais: " << std::endl;
                     std::cin >> valor;
 
-                    service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, data_lancamento, valor);
+                    //service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, data_lancamento, valor);
                     //repositorio jogos puxa o jogo
                 }
 
@@ -63,10 +62,12 @@ _options.push_back("5 - Loja");
                 }
                 case 4: {
                     repository::Usuarios repositorio_usuarios("repositorio_usuarios");
+                    std::string email = _usuario_dev.email();
                     model::Usuario usuario = repositorio_usuarios.obterUsuario(_usuario_dev.email());
                     return new Biblioteca(usuario);
                 }
             }
         }
+        return nullptr;
     }
 }

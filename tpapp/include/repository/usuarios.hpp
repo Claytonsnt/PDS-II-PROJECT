@@ -14,6 +14,7 @@ public:
     bool verificarUsuarioEmail(const std::string& email) const;
     void adicionarUsuario(const model::Usuario& usuario);
     model::Usuario obterUsuario(const std::string& email) const;
+    int qnt_usuarios();
 
 private:
     std::string _arquivo_usuarios;

@@ -32,21 +32,31 @@ void Usuarios::adicionarUsuario(const model::Usuario& usuario) {
     salvarUsuarios();
 }
 
+int Usuarios::qnt_usuarios() {
+    int count = 0;
+    for(const model::Usuario& usuario : _usuarios) {
+        count++;
+    }
+    return count;
+}
+
 void Usuarios::carregarUsuarios() {
     std::ifstream arquivo(_arquivo_usuarios, std::ios::in);
 
     if(arquivo.is_open()) {
-        std::string usuario_login, email, nome, sobrenome;
+        int usuario_id;
         unsigned idade;
         bool desenvolvedor;
+        std::string usuario_login, email, nome, sobrenome;
+        
 
-        while(arquivo >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor ) {
+        while(arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor ) {
             model::InfoPessoal info;
             info.primeiro_nome = nome;
             info.sobrenome = sobrenome;
             info.idade = idade;
 
-            model::Usuario usuario(usuario_login, email, info, desenvolvedor);
+            model::Usuario usuario(usuario_id, usuario_login, email, info, desenvolvedor);
             _usuarios.push_back(usuario);
         }
         arquivo.close();
@@ -60,7 +70,7 @@ void Usuarios::salvarUsuarios() const {
 
     if (arquivo.is_open()) {
         for (const auto& usuario : _usuarios) {
-            arquivo << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() << '\n';
+            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() <<'\n';
         }
         arquivo.close();
     } else {
