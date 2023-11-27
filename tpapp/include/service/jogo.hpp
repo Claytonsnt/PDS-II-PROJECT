@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <ctime>
 
 namespace tpapp::service {
 class Jogo {
