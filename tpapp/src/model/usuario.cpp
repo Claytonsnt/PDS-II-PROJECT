@@ -2,7 +2,11 @@
 #include <string>
 
 namespace tpapp:: model {
-Usuario::Usuario(std::string usuario_login, std::string email, InfoPessoal info): _usuario_login(usuario_login), _email(email), _info(info) {}
+Usuario::Usuario(int usuario_id, std::string usuario_login, std::string email, InfoPessoal info, bool desenvolvedor): _usuario_id(usuario_id), _usuario_login(usuario_login), _email(email), _info(info), _desenvolvedor(desenvolvedor) {}
+
+int Usuario::usuario_id() const {
+  return _usuario_id;
+}
 
 std::string Usuario::usuario_login() const {
   return _usuario_login;
@@ -18,6 +22,10 @@ std::string Usuario::nome() const {
 
 unsigned Usuario::idade() const {
   return _info.idade;
+}
+
+bool Usuario::desenvolvedor() const {
+  return _desenvolvedor;
 }
 
 std::string Usuario::to_string() const {

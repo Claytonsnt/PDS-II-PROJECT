@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 
@@ -11,7 +13,7 @@ public:
     std::string genero() const;
     double valor() const;
     std::string data_lancamento() const;
-
+  
 private:
     int _jogo_id;
     std::string _nome;
