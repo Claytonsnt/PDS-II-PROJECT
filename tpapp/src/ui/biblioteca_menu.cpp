@@ -8,6 +8,7 @@
 
 namespace tpapp::ui {
 Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
+    salvar_usuario_conectado(_usuario);
     _title = "Biblioteca";
     _options.push_back("1 - Visualizar Jogos");
     _options.push_back("2 - Pesquisar Jogo");
@@ -15,10 +16,48 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     _options.push_back("4 - Visualizar Favoritos");
 }
 
+    void Biblioteca::salvar_usuario_conectado(const model::Usuario &usuario) const {
+        std::string nome_arquivo = "usuario_conectado";
+        std::ofstream arquivo(nome_arquivo);
+        arquivo.clear();
+
+        if (arquivo.is_open()) {
+            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() <<'\n';
+            arquivo.close();
+        } else {
+            std::cerr << "> Erro ao salvar usuário conectado " << nome_arquivo << std::endl;
+        }
+    }
+
+    model::Usuario Biblioteca::carregar_usuario_conectado() {
+        std::string nome_arquivo = "usuario_conectado";
+    std::ifstream arquivo(nome_arquivo, std::ios::in);
+
+    if(arquivo.is_open()) {
+        int usuario_id;
+        unsigned idade;
+        bool desenvolvedor;
+        std::string usuario_login, email, nome, sobrenome;
+        
+        arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor;
+        model::InfoPessoal info;
+        info.primeiro_nome = nome;
+        info.sobrenome = sobrenome;
+        info.idade = idade;
+
+        model::Usuario usuario_conectado(usuario_id, usuario_login, email, info, desenvolvedor);
+        arquivo.close();
+        return usuario_conectado;
+    } else {
+        std::cerr << " ERRO ao abrir o arquivo de Usuários." << std::endl;
+    }
+    }
+
     Menu *Biblioteca::next(unsigned option) { //tentar passar o usuario aqui
         while(option != 0){
             switch(option) {
             case 1: {
+                model::Usuario usuario_conect = carregar_usuario_conectado();
                 std::string nome_arquivo = "BIBLIOTECA - " + _usuario.usuario_login();
                 Biblioteca carregar_jogos_arquivo(std::string nome_arquivo);
                 std::cout << "Jogos na biblioteca: " << std::endl;
