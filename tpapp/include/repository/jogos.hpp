@@ -13,7 +13,11 @@ public:
     Jogos(const std::string& nome_arquivo);
 
     void adicionar_jogo(const service::Jogo& jogo);
+    void remover_jogo(const int jogo_id);
+    void exibir_jogos();
+    void atualizar_jogo(int jogo_id, const service::Jogo& novo_jogo);
     service::Jogo obter_jogo(const service::Jogo& jogo) const;
+    int qnt_jogos();
 
 private:
     std::string _arquivo_jogos;

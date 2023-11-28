@@ -2,6 +2,8 @@
 #include "service/jogo.hpp"
 
 #include <fstream>
+#include <iostream>
+#include <algorithm>
 
 namespace tpapp::repository {
 
@@ -14,12 +16,55 @@ void Jogos::adicionar_jogo(const service::Jogo& jogo) {
     salvar_jogos();
 }
 
+void Jogos::remover_jogo(int jogo_id) {
+    auto it = std::find_if(_jogos.begin(), _jogos.end(), [jogo_id] (const service::Jogo& jogo) {
+        return jogo.jogo_id() == jogo_id;
+    });
+    if (it != _jogos.end()) {
+        _jogos.erase(it);
+        std::cout << "Jogo removido." << std::endl;
+    } else {
+        std::cout << "ID do jogo não encontrado." << std::endl;
+    }
+}
+
 service::Jogo Jogos::obter_jogo(const service::Jogo& jogo_procurado) const {
     for (const auto& jogo : _jogos) {
         if (jogo.jogo_id() == jogo_procurado.jogo_id()) {
             return jogo;
+        }else {
+            std::cout << "O jogo não foi encontrado. " << std::endl;
         }
+    };
+}
+
+void Jogos::exibir_jogos() {
+    std::cout << "====================================" << std::endl;
+    for (const auto& jogo : _jogos) {
+        std::cout << "[" << jogo.jogo_id() << "] " << "- " << jogo.nome() << std::endl;
+        };
+    std::cout << "====================================" << std::endl;
     }
+
+void Jogos::atualizar_jogo(int jogo_id, const service::Jogo& novo_jogo) {
+    auto it = std::find_if(_jogos.begin(), _jogos.end(), [jogo_id] (const service::Jogo& jogo) {
+        return jogo.jogo_id() == jogo_id;
+    });
+
+    if(it != _jogos.end()) {
+        *it = novo_jogo;
+        std::cout << "Informações do jogo atualizadas." <<std::endl;
+    } else {
+        std::cout << "ID do jogo não encontrado." << std::endl;
+    }
+}
+
+int Jogos::qnt_jogos() {
+    int count = 0;
+    for(const service::Jogo& jogo : _jogos) {
+        count++;
+    }
+    return count;
 }
 
 void Jogos::carregar_jogos() {

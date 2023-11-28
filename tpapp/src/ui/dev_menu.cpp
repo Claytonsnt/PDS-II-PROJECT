@@ -7,6 +7,8 @@
 #include "repository/usuarios.hpp"
 #include "repository/jogos.hpp"
 
+#include "service/jogo.hpp"
+
 #include <iostream>
 #include <string>
 
@@ -63,45 +65,72 @@ _options.push_back("5 - Loja");
             switch(option) {
                 case 1: {
 
-                    //int jogo_id;
-                    // buscar os jogos no repositorio de jogos ler todos os jogos e contar a quant e adicionar o jogos_id 
-
-
-                    std::string nome;
-                    std::cout << "Digite o nome do jogo: " <<std::endl;
-                    std::cin >> nome;
-
-                    std::string desenvolvedora;
-                    std::cout << "Digite a desenvolvedora do jogo: " <<std::endl;
-                    std::cin >> desenvolvedora;
-
-                    std::string genero;
-                    std::cout << "Digite o gênero do jogo: " << std::endl;
-                    std::cin >> genero;
-
-                    std::string data_lancamento;
-                    std::cout << "Digite a data de lançamento do jogo: " << std::endl;
-                    std::cin >> data_lancamento;
-
+                    std::cout << "> Passe as informações do jogo: " << std::endl;
+                    std::string nome, desenvolvedora, genero, data_lancamento;
                     double valor;
-                    std::cout << "Digite o preço do jogo em reais: " << std::endl;
+                    int jogo_id;
+                    std::cout << "o- Nome: " << std::endl;
+                    std::cin >> nome;
+                    std::cout << "o- Desenvolvedora: " << std::endl;
+                    std::cin >> desenvolvedora;
+                    std::cout << "o- Gênero: " << std::endl;
+                    std::cin >> genero;
+                    std::cout << "o- Data de Lançamento [dd/mm/aaaa]: " << std::endl;
+                    std::cin >> data_lancamento;
+                    std::cout << "o- Preço em reais: " << std::endl;
                     std::cin >> valor;
 
-                    //service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, data_lancamento, valor);
-                    //repositorio jogos puxa o jogo
+                    std::string nome_arquivo = "repositorio_jogos";
+                    repository::Jogos repositorio(nome_arquivo);
+
+                    jogo_id = repositorio.qnt_jogos();
+
+                    service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, valor, data_lancamento);
+                    repositorio.adicionar_jogo(jogo);
+                    std::cout << "Jogo Salvo..." << jogo.nome() << std::endl;
+                    break;
                 }
 
                 case 2: {
-                    //le o repositorio e remove o jogo desejado
+                    std::string nome_arquivo = "repositorio_jogos";
+                    repository::Jogos repositorio(nome_arquivo);
+                    repositorio.exibir_jogos();
+
+                    int jogo_id;
+                    std::cout << "> Digite o ID do jogo para removê-lo: " << std::endl;        
+                    std::cin >> jogo_id;
+
+                    repositorio.remover_jogo(jogo_id);
+                    break;
                 }
 
                 case 3: {
-                    //busca o jogo no repositório e atualiza o que deseja
+                    std::cout << "> Para alterar um jogo será necessário fornecer todas as informações novamente: " << std::endl;
+                    std::string nome, desenvolvedora, genero, data_lancamento;
+                    double valor;
+                    int jogo_id;
+                    std::cout << "o- Nome: " << std::endl;
+                    std::cin >> nome;
+                    std::cout << "o- Desenvolvedora: " << std::endl;
+                    std::cin >> desenvolvedora;
+                    std::cout << "o- Gênero: " << std::endl;
+                    std::cin >> genero;
+                    std::cout << "o- Data de Lançamento [dd/mm/aaaa]: " << std::endl;
+                    std::cin >> data_lancamento;
+                    std::cout << "o- Preço: " << std::endl;
+                    std::cin >> valor;
+
+                    std::string nome_arquivo = "repositorio_jogos";
+                    repository::Jogos repositorio(nome_arquivo);
+                    repositorio.exibir_jogos();
+
+                    std::cout << "o- Será necessário informar o ID do jogo: " << std::endl;
+                    std::cin >> jogo_id;
+                    break;
                 }
                 case 4: {
                     repository::Usuarios repositorio_usuarios("repositorio_usuarios");
                     model::Usuario usuario_conect = carregar_usuario_conectado();
-                    std::string email = usuario_conect.email();
                     model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
                     return new Biblioteca(usuario);
                 }
