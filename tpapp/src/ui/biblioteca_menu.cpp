@@ -1,5 +1,6 @@
 #include "ui/biblioteca_menu.hpp"
 #include "ui/dev_menu.hpp"
+#include "ui/loja.hpp"
 
 #include "service/jogo.hpp"
 
@@ -21,8 +22,10 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     _options.push_back("2 - Pesquisar Jogo");
     _options.push_back("3 - Adicionar Jogo aos Favoritos");
     _options.push_back("4 - Visualizar Favoritos");
-    _options.push_back("5 - Loja");
-    _options.push_back("6 - Menu de Desenvolvedor");
+    _options.push_back("5 - [Loja]");
+    if(_usuario.desenvolvedor()){
+        _options.push_back("6 - [Menu de Desenvolvedor]");
+    }
 
 }
 
@@ -41,7 +44,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
     model::Usuario Biblioteca::carregar_usuario_conectado() {
         std::string nome_arquivo = "usuario_conectado";
-    std::ifstream arquivo(nome_arquivo, std::ios::in);
+        std::ifstream arquivo(nome_arquivo, std::ios::in);
 
     if(arquivo.is_open()) {
         int usuario_id;
@@ -63,18 +66,18 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     }
     }
 
-    Menu *Biblioteca::next(unsigned option) { //tentar passar o usuario aqui
+    Menu *Biblioteca::next(unsigned option) {
+        model::Usuario usuario_conect = carregar_usuario_conectado();
         while(option != 0){
             switch(option) {
             case 1: {
-                model::Usuario usuario_conect = carregar_usuario_conectado();
                 std::string nome_arquivo = "BIBLIOTECA - " + _usuario.usuario_login();
                 Biblioteca carregar_jogos_arquivo(std::string nome_arquivo);
                 std::cout << "Jogos na biblioteca: " << std::endl;
                 for(const service::Jogo& jogo : _jogos) {
                 std::cout << jogo.nome() << std::endl;
                 }
-                break;
+                return new Biblioteca(usuario_conect);
                 }
 
             case 2: {
@@ -84,13 +87,13 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 for(service::Jogo& jogo : _jogos) {
                     if(jogo.nome() == nome_jogo) {
                         std::cout << "> " << nome_jogo << " - Está na sua biblioteca." << std::endl;
-                        break;
+                        return new Biblioteca(usuario_conect);
                     }
                     else{
                         std::cout << ">" << nome_jogo << "- NÃO está na sua biblioteca." << std::endl;
+                        return new Biblioteca(usuario_conect);
                     }
                 }
-                break;
                 }
             case 3: {
                 std::cout << "Jogos na biblioteca: " << std::endl;
@@ -98,31 +101,40 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 std::cout <<"ID: " <<jogo.jogo_id() << " - " << jogo.nome() << std::endl;
                 }
                 int id;
-                std::cout << "> Digite o do jogo que deseja adicionar a biblioteca" << std::endl;
+                std::cout << "> Digite o do jogo que deseja adicionar aos Favoritos" << std::endl;
                 std:: cin >> id; 
                 for(const service::Jogo& jogo : _jogos) {
                     if (jogo.jogo_id() == id) {
                         _favoritos.push_back(jogo);
                     } else {
                         std::cout << "O ID digitado é inválido." << std::endl;
+                        break;
                     }
                 }
-                break;
+                return new Biblioteca(usuario_conect);
             }
 
             case 4: {
                 std::cout << "Jogos Favoritos: " << std::endl;
-                for(const service::Jogo& jogo : _favoritos) {
-                std::cout << jogo.nome() << std::endl;
+                if(_favoritos.empty()) {
+                    std::cout << "> Você ainda não possui nenhum jogo favorito." << std::endl;
+                } else {
+                    for(const service::Jogo& jogo : _favoritos) {
+                        std::cout << jogo.nome() << std::endl;
+                    }
                 }
-                break;
+                return new Biblioteca(usuario_conect);
                 }
+                
 
-            case 5: {}
+            case 5: {
+                repository::Usuarios repositorio_usuarios("repositorio_usuarios");
+                model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
+                return new Loja(usuario);
+            }
 
             case 6: {
                 repository::Desenvolvedores repositorio_devs("repositorio_usuarios");
-                model::Usuario usuario_conect = carregar_usuario_conectado();
                 model::Desenvolvedor dev = repositorio_devs.obterDesenvolvedor(usuario_conect.email());
                 return new DevMenu(dev);
             }

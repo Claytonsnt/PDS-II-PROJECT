@@ -22,6 +22,7 @@ void Jogos::remover_jogo(int jogo_id) {
     });
     if (it != _jogos.end()) {
         _jogos.erase(it);
+        salvar_jogos();
         std::cout << "Jogo removido." << std::endl;
     } else {
         std::cout << "ID do jogo não encontrado." << std::endl;
