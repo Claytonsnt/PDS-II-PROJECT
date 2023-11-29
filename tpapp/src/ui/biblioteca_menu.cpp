@@ -1,6 +1,13 @@
 #include "ui/biblioteca_menu.hpp"
+#include "ui/dev_menu.hpp"
+
 #include "service/jogo.hpp"
+
 #include "model/usuario.hpp"
+#include "model/desenvolvedor.hpp"
+
+#include "repository/usuarios.hpp"
+#include "repository/desenvolvedores.hpp"
 
 #include <iostream>
 #include <string>
@@ -14,6 +21,9 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     _options.push_back("2 - Pesquisar Jogo");
     _options.push_back("3 - Adicionar Jogo aos Favoritos");
     _options.push_back("4 - Visualizar Favoritos");
+    _options.push_back("5 - Loja");
+    _options.push_back("6 - Menu de Desenvolvedor");
+
 }
 
     void Biblioteca::salvar_usuario_conectado(const model::Usuario &usuario) const {
@@ -107,6 +117,15 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 }
                 break;
                 }
+
+            case 5: {}
+
+            case 6: {
+                repository::Desenvolvedores repositorio_devs("repositorio_usuarios");
+                model::Usuario usuario_conect = carregar_usuario_conectado();
+                model::Desenvolvedor dev = repositorio_devs.obterDesenvolvedor(usuario_conect.email());
+                return new DevMenu(dev);
+            }
             }
         }
     return nullptr;
@@ -117,7 +136,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
         if (arquivo.is_open()) {
             for (const auto& jogo : _jogos) {
-                arquivo << jogo.jogo_id() << ',' << jogo.nome() << ',' << jogo.desenvolvedora() << ',' << jogo.genero() << ',' << jogo.data_lancamento() << ',' << jogo.valor() << '\n';
+                arquivo << jogo.jogo_id() << ',' << jogo.nome() << ',' << jogo.desenvolvedora() << ',' << jogo.genero() << ',' << jogo.valor() << ',' << jogo.data_lancamento() << '\n';
             }
             arquivo.close();
             std::cout << "> Dados dos jogos salvos em " << nome_arquivo << std::endl;
@@ -136,8 +155,8 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
             std::string nome, desenvolvedora_id, genero, data_lancamento;
             double valor;
 
-            while (arquivo >> jogo_id >> nome >> desenvolvedora_id >> genero >> data_lancamento >> valor) {
-                service::Jogo jogo(jogo_id, nome, desenvolvedora_id, genero, data_lancamento, valor);
+            while (arquivo >> jogo_id >> nome >> desenvolvedora_id >> genero >> valor >> data_lancamento ) {
+                service::Jogo jogo(jogo_id, nome, desenvolvedora_id, genero, valor, data_lancamento);
                 _jogos.push_back(jogo);
             }
             arquivo.close();
