@@ -5,10 +5,10 @@
 
 namespace tpapp::repository {
 Desenvolvedores::Desenvolvedores(const std::string& nome_arquivo): _arquivo_desenvolvedores(nome_arquivo) {
-    carregarDesenvolvedores();
+    carregar_desenvolvedores();
 } 
 
-model::Desenvolvedor Desenvolvedores::obterDesenvolvedor(const std::string& email) const {
+model::Desenvolvedor Desenvolvedores::obter_desenvolvedor(const std::string& email) const {
     for (const auto& desenvolvedor : _desenvolvedores) {
         if (desenvolvedor.email() == email){
             return desenvolvedor;
@@ -17,12 +17,12 @@ model::Desenvolvedor Desenvolvedores::obterDesenvolvedor(const std::string& emai
     throw std::runtime_error("Usuário não encontrado.");
 }
 
-void Desenvolvedores::adicionarDesenvolvedor(const model::Desenvolvedor& desenvolvedor) {
+void Desenvolvedores::adicionar_desenvolvedor(const model::Desenvolvedor& desenvolvedor) {
     _desenvolvedores.push_back(desenvolvedor);
-    salvarDesenvolvedores();
+    salvar_desenvolvedores();
 }
 
-void Desenvolvedores::salvarDesenvolvedores() const {
+void Desenvolvedores::salvar_desenvolvedores() const {
     std::ofstream arquivo(_arquivo_desenvolvedores);
 
     if (arquivo.is_open()) {
@@ -35,7 +35,7 @@ void Desenvolvedores::salvarDesenvolvedores() const {
     }
 }
 
-void Desenvolvedores::carregarDesenvolvedores() {
+void Desenvolvedores::carregar_desenvolvedores() {
     std::ifstream arquivo(_arquivo_desenvolvedores, std::ios::in);
 
     if(arquivo.is_open()) {

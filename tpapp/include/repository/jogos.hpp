@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
 #include "service/jogo.hpp"
 
 namespace tpapp::repository {
@@ -17,13 +16,12 @@ public:
     void exibir_jogos();
     void atualizar_jogo(int jogo_id, const service::Jogo& novo_jogo);
     service::Jogo obter_jogo(const service::Jogo& jogo) const;
+    void carregar_jogos();
+    void salvar_jogos() const;
     int qnt_jogos();
 
 private:
     std::string _arquivo_jogos;
     std::vector<service::Jogo> _jogos;
-
-    void carregar_jogos();
-    void salvar_jogos() const;
 };
 }

@@ -10,15 +10,15 @@ class Desenvolvedores {
 public:
     Desenvolvedores(const std::string& nome_arquivo);
 
-    model::Desenvolvedor obterDesenvolvedor(const std::string& email) const;
-    void adicionarDesenvolvedor(const model::Desenvolvedor& desenvolvedor);
+    model::Desenvolvedor obter_desenvolvedor(const std::string& email) const;
+    void adicionar_desenvolvedor(const model::Desenvolvedor& desenvolvedor);
 
 private:
     std::string _arquivo_desenvolvedores;
     std::vector<model::Desenvolvedor> _desenvolvedores;
 
-    void carregarDesenvolvedores();
-    void salvarDesenvolvedores() const;
+    void carregar_desenvolvedores();
+    void salvar_desenvolvedores() const;
 
 };
 }
