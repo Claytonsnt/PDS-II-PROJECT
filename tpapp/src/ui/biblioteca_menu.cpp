@@ -117,7 +117,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
         if (arquivo.is_open()) {
             for (const auto& jogo : _jogos) {
-                arquivo << jogo.jogo_id() << ',' << jogo.nome() << ',' << jogo.desenvolvedora() << ',' << jogo.genero() << ',' << jogo.data_lacamento() << ',' << jogo.valor() << '\n';
+                arquivo << jogo.jogo_id() << ',' << jogo.nome() << ',' << jogo.desenvolvedora() << ',' << jogo.genero() << ',' << jogo.data_lancamento() << ',' << jogo.valor() << '\n';
             }
             arquivo.close();
             std::cout << "> Dados dos jogos salvos em " << nome_arquivo << std::endl;

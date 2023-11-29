@@ -20,7 +20,7 @@ double saldo() {
     return 0;
 }
 
-void Carteira::adiciona_transacao(service::Transacao t) {
+void Carteira::adicionar_transacao(service::Transacao t) {
     _historico.push_back(t);
     return;
 }   

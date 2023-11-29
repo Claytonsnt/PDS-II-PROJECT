@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,7 +11,7 @@ public:
     Carteira(double saldo);
     double saldo();
     void alterar_saldo(double valor);
-    void adiciona_transacao(service::Transacao t);
+    void adicionar_transacao(service::Transacao t);
 
 private:
     double _saldo;
