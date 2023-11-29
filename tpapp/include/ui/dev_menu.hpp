@@ -15,9 +15,6 @@ public:
 
     model::Desenvolvedor const &_usuario_dev;
 
-    void adicionar_jogo();
-    void remover_jogo();
-    void atualizar_jogo();
 private:
     void salvar_usuario_conectado(const model::Usuario& usuario) const;
     model::Usuario carregar_usuario_conectado();

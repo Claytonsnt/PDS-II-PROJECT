@@ -68,8 +68,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
     Menu *Biblioteca::next(unsigned option) {
         model::Usuario usuario_conect = carregar_usuario_conectado();
-        while(option != 0){
-            switch(option) {
+        switch(option) {
             case 1: {
                 std::string nome_arquivo = "BIBLIOTECA - " + _usuario.usuario_login();
                 Biblioteca carregar_jogos_arquivo(std::string nome_arquivo);
@@ -82,8 +81,12 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
             case 2: {
                 std::string nome_jogo;
-                std::cout << "> Digite o nome do jogo: ";
+                std::cout << "> Digite o nome do jogo: " << std::endl;
                 std::cin >> nome_jogo;
+                if(_jogos.empty()) {
+                    std::cout << "Sua biblioteca está vazia." << std::endl;
+                    return new Biblioteca(usuario_conect);
+                }else {
                 for(service::Jogo& jogo : _jogos) {
                     if(jogo.nome() == nome_jogo) {
                         std::cout << "> " << nome_jogo << " - Está na sua biblioteca." << std::endl;
@@ -95,8 +98,13 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                     }
                 }
                 }
+                }
             case 3: {
                 std::cout << "Jogos na biblioteca: " << std::endl;
+                if(_jogos.empty()){
+                    std::cout << "Sua biblioteca está vazia." << std::endl;
+                    return new Biblioteca(usuario_conect);
+                }else {
                 for(const service::Jogo& jogo : _jogos) {
                 std::cout <<"ID: " <<jogo.jogo_id() << " - " << jogo.nome() << std::endl;
                 }
@@ -106,10 +114,13 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 for(const service::Jogo& jogo : _jogos) {
                     if (jogo.jogo_id() == id) {
                         _favoritos.push_back(jogo);
+                        std::cout << "O jogo " << jogo.nome() << " foi adicionado aos favoritos." << std::endl;
+                        return new Biblioteca(usuario_conect);
                     } else {
                         std::cout << "O ID digitado é inválido." << std::endl;
                         break;
                     }
+                }
                 }
                 return new Biblioteca(usuario_conect);
             }
@@ -118,26 +129,27 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 std::cout << "Jogos Favoritos: " << std::endl;
                 if(_favoritos.empty()) {
                     std::cout << "> Você ainda não possui nenhum jogo favorito." << std::endl;
+                    return new Biblioteca(usuario_conect);
                 } else {
                     for(const service::Jogo& jogo : _favoritos) {
                         std::cout << jogo.nome() << std::endl;
+                        return new Biblioteca(usuario_conect);
                     }
                 }
-                return new Biblioteca(usuario_conect);
                 }
                 
 
             case 5: {
-                repository::Usuarios repositorio_usuarios("repositorio_usuarios");
-                model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
-                return new Loja(usuario);
+                //repository::Usuarios repositorio_usuarios("repositorio_usuarios");
+                //model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
+                model::Usuario usuario_conect = carregar_usuario_conectado();
+                return new Loja(usuario_conect);
             }
 
             case 6: {
-                repository::Desenvolvedores repositorio_devs("repositorio_usuarios");
+                repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
                 model::Desenvolvedor dev = repositorio_devs.obterDesenvolvedor(usuario_conect.email());
                 return new DevMenu(dev);
-            }
             }
         }
     return nullptr;

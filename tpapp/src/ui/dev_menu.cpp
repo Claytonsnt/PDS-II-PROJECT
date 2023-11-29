@@ -63,7 +63,7 @@ _options.push_back("5 - [Loja]");
     }
 
     Menu* DevMenu::next(unsigned option) {
-        repository::Desenvolvedores repositorio_devs("repositorio_usuarios");
+        repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
         model::Usuario usuario_conect = carregar_usuario_conectado();
         model::Desenvolvedor dev = repositorio_devs.obterDesenvolvedor(usuario_conect.email());
             switch(option) {
@@ -135,13 +135,15 @@ _options.push_back("5 - [Loja]");
                 case 4: {
                     repository::Usuarios repositorio_usuarios("repositorio_usuarios");
                     model::Usuario usuario_conect = carregar_usuario_conectado();
-                    model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
+                    std::string email = usuario_conect.email();
+                    model::Usuario usuario = repositorio_usuarios.obterUsuario(email);                     
                     return new Biblioteca(usuario);
                 }
                 case 5: {
                     repository::Usuarios repositorio_usuarios("repositorio_usuarios");
                     model::Usuario usuario_conect = carregar_usuario_conectado();
-                    model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
+                    //std::string email = ;
+                    model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());                     
                     return new Loja(usuario);
                 }
             }
