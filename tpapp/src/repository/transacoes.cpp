@@ -6,6 +6,12 @@
 #include "service/carteira.hpp"
 #include "service/jogo.hpp"
 
+#include "model/usuario.hpp"
+
+#include "ui/loja.hpp"
+#include "ui/biblioteca_menu.hpp"
+#include "ui/menu.hpp"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -19,11 +25,31 @@ Transacoes::Transacoes(const std::string& nome_arquivo): _arquivo_transacoes(nom
 
 void Transacoes::adicionar_transacao(const service::Transacao& transacao) {
     _transacoes.push_back(transacao);
+    salvar_transacoes();
     return;
 }
 
-void Transacoes::comprar(unsigned saldo_carteira, unsigned valor) {
-    
+void Transacoes::comprar(const service::Jogo& jogo, const model::Usuario& usuario) {
+    std::cout << ">Como deseja realizar sua compra?\n [1] SALDO DA CARTEIRA \n" << "**NO MOMENTO SO ESTAMOS ACEITANDO COMPRAS PELO SALDO DA CARTEIRA**" <<std::endl;
+    int opcao;
+    std::cin >> opcao;
+    if(opcao == 1) { 
+        if (usuario.saldo() < jogo.valor()) {
+            std::cout << "> Seu saldo é insufuciente para realizar a compra." << std::endl;
+            return;
+        } else {
+            std::string nome_arquivo = "Biblioteca - " + usuario.usuario_login();
+            repository::Bibliotecas repositorio(nome_arquivo);
+            repositorio.adicionar_jogo(jogo);
+            service::Transacao transacao("compra", jogo.valor(), "carteira", jogo.data_lancamento()); //implementar data na transacao
+            Transacoes::adicionar_transacao(transacao);
+            std::cout << "> Seu jogo já está disponível na sua biblioteca." << std::endl;
+            return;
+        }
+    } else {
+        std::cout << ">Voltando a loja..." << std::endl;
+        return;
+    }
 }
 
 void Transacoes::carregar_transacoes() {

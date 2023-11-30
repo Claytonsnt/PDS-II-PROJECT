@@ -3,7 +3,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 #include "service/transacao.hpp"
+#include "service/jogo.hpp"
+
+#include "model/usuario.hpp"
 
 namespace tpapp::repository {
 
@@ -14,7 +18,7 @@ public:
     void adicionar_transacao(const service::Transacao& transacao);
     void carregar_transacoes();
     void salvar_transacoes();
-    void comprar(unsigned saldo_carteira, unsigned valor);
+    void comprar(const service::Jogo& jogo, const model::Usuario& usuario);
     
 private:
     std::string _arquivo_transacoes;
