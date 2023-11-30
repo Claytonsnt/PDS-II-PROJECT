@@ -38,7 +38,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
         arquivo.clear();
 
         if (arquivo.is_open()) {
-            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() <<'\n';
+            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() << ' ' << usuario.saldo() << std::endl;
             arquivo.close();
         } else {
             std::cerr << "> Erro ao salvar usuário conectado " << nome_arquivo << std::endl;
@@ -51,17 +51,17 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
     if(arquivo.is_open()) {
         int usuario_id;
-        unsigned idade;
+        unsigned idade, saldo;
         bool desenvolvedor;
         std::string usuario_login, email, nome, sobrenome;
         
-        arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor;
+        arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor >> saldo;
         model::InfoPessoal info;
         info.primeiro_nome = nome;
         info.sobrenome = sobrenome;
         info.idade = idade;
 
-        model::Usuario usuario_conectado(usuario_id, usuario_login, email, info, desenvolvedor);
+        model::Usuario usuario_conectado(usuario_id, usuario_login, email, info, desenvolvedor, saldo);
         arquivo.close();
         return usuario_conectado;
     } else {

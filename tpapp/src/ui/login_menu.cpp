@@ -91,7 +91,9 @@ Menu *LoginMenu::next(unsigned option) {
             model::InfoPessoal info;
             ler_info_pessoal(info);
 
-            model::Usuario usuario(usuario_id, usuario_login, email, info, desenvolvedor);
+            unsigned saldo = 00.00;
+
+            model::Usuario usuario(usuario_id, usuario_login, email, info, desenvolvedor, saldo);
             
             repositorio.adicionar_usuario(usuario);
             
@@ -128,8 +130,10 @@ Menu *LoginMenu::next(unsigned option) {
             model::InfoPessoal info;
             ler_info_pessoal(info);
 
-            model::Desenvolvedor dev(usuario_id, usuario_login, desenvolvedora_id, email, info);
-            model::Usuario usuario(usuario_id, usuario_login, email, info, true);
+            unsigned saldo = 00.00;
+
+            model::Desenvolvedor dev(usuario_id, usuario_login, desenvolvedora_id, email, info, saldo);
+            model::Usuario usuario(usuario_id, usuario_login, email, info, true, saldo);
 
             repositorio_dev.adicionar_desenvolvedor(dev);
             repositorio_usu.adicionar_usuario(usuario);

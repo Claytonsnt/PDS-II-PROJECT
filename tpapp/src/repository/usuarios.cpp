@@ -46,17 +46,17 @@ void Usuarios::carregar_usuarios() {
 
     if(arquivo.is_open()) {
         int usuario_id;
-        unsigned idade;
+        unsigned idade, saldo;
         bool desenvolvedor;
         std::string usuario_login, email, nome, sobrenome;
         
-        while(arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor ) {
+        while(arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor >> saldo) {
             model::InfoPessoal info;
             info.primeiro_nome = nome;
             info.sobrenome = sobrenome;
             info.idade = idade;
 
-            model::Usuario usuario(usuario_id, usuario_login, email, info, desenvolvedor);
+            model::Usuario usuario(usuario_id, usuario_login, email, info, desenvolvedor, saldo);
             _usuarios.push_back(usuario);
         }
         arquivo.close();

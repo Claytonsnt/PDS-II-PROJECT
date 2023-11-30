@@ -7,7 +7,7 @@ namespace tpapp::model {
 class Desenvolvedor : public Usuario {
 public:
     Desenvolvedor(int usuario_id, std::string usuario_login, unsigned desenvolvedora_id, std::string email,
-	              InfoPessoal info);
+	              InfoPessoal info, unsigned saldo);
     unsigned desenvolvedora_id() const;
     std::string to_string() const;
 private:
