@@ -25,9 +25,10 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     _options.push_back("2 - Pesquisar Jogo");
     _options.push_back("3 - Adicionar Jogo aos Favoritos");
     _options.push_back("4 - Visualizar Favoritos");
-    _options.push_back("5 - [Loja]");
+    _options.push_back("5 - Adicionar saldo a carteira");
+    _options.push_back("6 - [Loja]");
     if(_usuario.desenvolvedor()){
-        _options.push_back("6 - [Menu de Desenvolvedor]");
+        _options.push_back("7 - [Menu de Desenvolvedor]");
     }
 
 }
@@ -160,13 +161,19 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                         return new Biblioteca(usuario_conect);
                     }
                 }
-                }
-                
+            }
             case 5: {
+                std::cout << "> Qual valor deseja adicionar a sua carteira? (Em R$) " << std::endl;
+                unsigned valor;
+                std::cin >> valor;
+                usuario_conect.alterar_saldo(valor);
+                return new Biblioteca(usuario_conect);
+            }
+            case 6: {
                 return new Loja(usuario_conect);
             }
 
-            case 6: {
+            case 7: {
                 repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
                 model::Desenvolvedor dev = repositorio_devs.obter_desenvolvedor(usuario_conect.email());
                 return new DevMenu(dev);

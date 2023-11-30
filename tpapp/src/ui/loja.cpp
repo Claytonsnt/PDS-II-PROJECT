@@ -73,9 +73,13 @@ namespace tpapp::ui {
 
     Menu *Loja::next(unsigned option) {
         model::Usuario usuario_conect = carregar_usuario_conectado();
+
+        std::cout << "> CARTEIRA: " << usuario_conect.saldo() << "R$" << std::endl;
+
         std::string nome_arquivo = "repositorio_jogos";
         repository::Jogos repositorio(nome_arquivo);
         std::vector<service::Jogo> _jogos = repositorio.enviar_jogos();
+
         switch(option) {
             case 1: {
                 std::cout << "> Como deseja exibir? " << std::endl;
@@ -209,7 +213,7 @@ namespace tpapp::ui {
             }
 
             case 3: {
-                //adicionar um repositorio para lista de desejos
+                //implementar a lista de desejos no repositorio de usuarios
                 if(_lista_desejos.empty()) {
                     std::cout << "Sua Lista de Desejos está vazia, começe a desejar agora mesmo!" << std::endl;
                     return new Loja(usuario_conect);

@@ -19,7 +19,7 @@ public:
     unsigned idade() const;
     unsigned saldo() const;
     bool desenvolvedor() const;
-    
+    void alterar_saldo(unsigned valor);
 
     std::string to_string() const;
 
