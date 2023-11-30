@@ -11,17 +11,17 @@ class Usuarios {
 public:
     Usuarios(const std::string& nome_arquivo);
 
-    bool verificarUsuarioEmail(const std::string& email) const;
-    void adicionarUsuario(const model::Usuario& usuario);
-    model::Usuario obterUsuario(const std::string& email) const;
+    bool verificar_usuario_email(const std::string& email) const;
+    void adicionar_usuario(const model::Usuario& usuario);
+    model::Usuario obter_usuario(const std::string& email) const;
     int qnt_usuarios();
 
 private:
     std::string _arquivo_usuarios;
     std::vector<model::Usuario> _usuarios;
 
-    void carregarUsuarios();
-    void salvarUsuarios() const;
+    void carregar_usuarios();
+    void salvar_usuarios() const;
 
 };
 }

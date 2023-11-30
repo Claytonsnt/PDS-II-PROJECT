@@ -78,11 +78,14 @@ void Jogos::carregar_jogos() {
         std::string nome, desenvolvedora, genero, data_lancamento;
         double valor;
         int jogo_id;
-        while(arquivo >> jogo_id >> nome >> desenvolvedora >> genero >> valor >> data_lancamento) {
-            service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, valor, data_lancamento);
+        while (arquivo >> jogo_id >> nome >> desenvolvedora >> genero >> data_lancamento >> valor) {
+            service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, data_lancamento, valor);
             _jogos.push_back(jogo);
         }
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de jogos." << std::endl;
     }
+    return;
 }
 
 void Jogos::salvar_jogos() const {
@@ -93,9 +96,9 @@ void Jogos::salvar_jogos() const {
             arquivo << jogo.jogo_id() << " " << jogo.nome() << " " << jogo.desenvolvedora() << " " << jogo.genero() << " " << jogo.valor() << " " << jogo.data_lancamento() << std::endl;
         }
         arquivo.close();
-    }
-    else {
+    } else {
         std::cerr << "Erro ao salvar o arquivo de jogos." << std::endl;
     }
+    return;
 }
 }

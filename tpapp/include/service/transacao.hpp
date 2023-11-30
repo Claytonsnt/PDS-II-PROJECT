@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -7,19 +9,17 @@
 namespace tpapp::service {
 class Transacao {
 public:
-    Transacao(const double valor, const std::string tipo, const std::string data, const std::string forma_pagamento);
-    double valor() const;
+    Transacao(const std::string tipo, const double valor, const std::string forma_pagamento, const std::string data);  
+    
     std::string tipo() const;
-    std::string data() const;
+    double valor() const;
     std::string forma_pagamento() const;
-    //ui::Loja carrinho_de_compras();
-    void comprar(service::Jogo jogo);
+    std::string data() const;
 
 private:
-    double _valor;
     std::string _tipo;
-    std::string _data;
+    double _valor;
     std::string _forma_pagamento;
-    //ui::Loja carrinho_de_compras;
+    std::string _data;
 };
 }

@@ -2,10 +2,7 @@
 
 #include <string>
 
-
-
 namespace tpapp::model {
-
 struct InfoPessoal {
 std::string primeiro_nome;
 std::string sobrenome;

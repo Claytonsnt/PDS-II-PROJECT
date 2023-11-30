@@ -1,9 +1,8 @@
 #include "service/jogo.hpp"
-
 #include <string>
 
 namespace tpapp::service {
-Jogo::Jogo(int jogo_id, std::string nome, std::string desenvolvedora, std::string genero, double valor, std::string data_lancamento): _jogo_id(jogo_id), _nome(nome),_desenvolvedora(desenvolvedora), _genero(genero), _valor(valor), _data_lancamento(data_lancamento) {}
+Jogo::Jogo(int jogo_id, std::string nome, std::string desenvolvedora, std::string genero, double valor, std::string data_lancamento): _jogo_id(jogo_id), _nome(nome), _desenvolvedora(desenvolvedora), _genero(genero), _valor(valor), _data_lancamento(data_lancamento) {}
 
 int Jogo::jogo_id() const{
     return _jogo_id;

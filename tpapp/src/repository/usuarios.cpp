@@ -6,10 +6,10 @@
 namespace tpapp::repository {
 
 Usuarios::Usuarios(const std::string& nome_arquivo): _arquivo_usuarios(nome_arquivo) {
-    carregarUsuarios();
+    carregar_usuarios();
 } 
 
-bool Usuarios::verificarUsuarioEmail(const std::string& email) const {
+bool Usuarios::verificar_usuario_email(const std::string& email) const {
     for (const auto& usuario : _usuarios) {
         if (usuario.email() == email) {
             return true;
@@ -18,7 +18,7 @@ bool Usuarios::verificarUsuarioEmail(const std::string& email) const {
     return false;
 }
 
-model::Usuario Usuarios::obterUsuario(const std::string& email) const {
+model::Usuario Usuarios::obter_usuario(const std::string& email) const {
     for (const auto& usuario : _usuarios) {
         if (usuario.email() == email){
             return usuario;
@@ -27,9 +27,10 @@ model::Usuario Usuarios::obterUsuario(const std::string& email) const {
     throw std::runtime_error("Usuário não encontrado.");
 }
 
-void Usuarios::adicionarUsuario(const model::Usuario& usuario) {
+void Usuarios::adicionar_usuario(const model::Usuario& usuario) {
     _usuarios.push_back(usuario);
-    salvarUsuarios();
+    salvar_usuarios();
+    return;
 }
 
 int Usuarios::qnt_usuarios() {
@@ -40,7 +41,7 @@ int Usuarios::qnt_usuarios() {
     return count;
 }
 
-void Usuarios::carregarUsuarios() {
+void Usuarios::carregar_usuarios() {
     std::ifstream arquivo(_arquivo_usuarios, std::ios::in);
 
     if(arquivo.is_open()) {
@@ -49,7 +50,6 @@ void Usuarios::carregarUsuarios() {
         bool desenvolvedor;
         std::string usuario_login, email, nome, sobrenome;
         
-
         while(arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor ) {
             model::InfoPessoal info;
             info.primeiro_nome = nome;
@@ -61,11 +61,11 @@ void Usuarios::carregarUsuarios() {
         }
         arquivo.close();
     } else {
-        std::cerr << " Erro ao abrir o arquivo de Usuários." << std::endl;
+        std::cerr << "Erro ao abrir o arquivo de usuários." << std::endl;
     }
 }
 
-void Usuarios::salvarUsuarios() const {
+void Usuarios::salvar_usuarios() const {
     std::ofstream arquivo(_arquivo_usuarios);
 
     if (arquivo.is_open()) {

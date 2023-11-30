@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
 #include "service/jogo.hpp"
 
 namespace tpapp::repository {
@@ -23,8 +22,5 @@ public:
 private:
     std::string _arquivo_jogos;
     std::vector<service::Jogo> _jogos;
-
-    void carregar_jogos();
-    void salvar_jogos() const;
 };
 }
