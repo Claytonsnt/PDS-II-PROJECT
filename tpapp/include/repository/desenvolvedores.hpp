@@ -12,13 +12,13 @@ public:
 
     model::Desenvolvedor obter_desenvolvedor(const std::string& email) const;
     void adicionar_desenvolvedor(const model::Desenvolvedor& desenvolvedor);
+    void salvar_desenvolvedores() const;
 
 private:
     std::string _arquivo_desenvolvedores;
     std::vector<model::Desenvolvedor> _desenvolvedores;
 
     void carregar_desenvolvedores();
-    void salvar_desenvolvedores() const;
 
 };
 }

@@ -70,7 +70,7 @@ void Usuarios::salvar_usuarios() const {
 
     if (arquivo.is_open()) {
         for (const auto& usuario : _usuarios) {
-            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() <<'\n';
+            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() << ' ' << usuario.saldo() <<'\n';
         }
         arquivo.close();
     } else {

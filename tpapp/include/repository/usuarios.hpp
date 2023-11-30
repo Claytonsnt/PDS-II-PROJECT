@@ -15,13 +15,13 @@ public:
     void adicionar_usuario(const model::Usuario& usuario);
     model::Usuario obter_usuario(const std::string& email) const;
     int qnt_usuarios();
+    void salvar_usuarios() const;
 
 private:
     std::string _arquivo_usuarios;
     std::vector<model::Usuario> _usuarios;
 
     void carregar_usuarios();
-    void salvar_usuarios() const;
 
 };
 }

@@ -167,6 +167,10 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 unsigned valor;
                 std::cin >> valor;
                 usuario_conect.alterar_saldo(valor);
+                repository::Usuarios rep_usuario("repositorio_usuarios");
+                repository::Desenvolvedores rep_dev("repositorio_desenvolvedores");
+                rep_usuario.salvar_usuarios();
+                rep_dev.salvar_desenvolvedores();
                 return new Biblioteca(usuario_conect);
             }
             case 6: {
