@@ -13,14 +13,14 @@
 
 namespace tpapp::ui {
 LoginMenu::LoginMenu() {
-    _title = "Menu de Autentificação";
+    _title = "Menu de Autenticação";
     _options.push_back("1 - Entrar");
     _options.push_back("2 - Criar Usuário");
     _options.push_back("3 - Criar Usuário Desenvolvedor");
 }
 
 Menu *LoginMenu::next(unsigned option) {
-    auto ler_autenticacao = [](std::string &email) {
+    auto ler_autenticacao = [](std::string &email) { //teste para email
         std::cout << "> Email: ";
         std::cin >> email;
     };
@@ -116,7 +116,7 @@ Menu *LoginMenu::next(unsigned option) {
             std::string arquivo_dev = "repositorio_desenvolvedores";
             repository::Desenvolvedores repositorio_dev(arquivo_dev);
 
-            if (repositorio_usu.verificarUsuarioEmail(email)) {
+            if (repositorio_usu.verificarUsuarioEmail(email)) { //trocar
                 std::cout << "E-mail já utilizado." << std::endl;
                 break;
             } else {

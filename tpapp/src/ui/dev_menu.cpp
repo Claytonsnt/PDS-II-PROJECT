@@ -3,8 +3,10 @@
 
 #include "ui/dev_menu.hpp"
 #include "ui/biblioteca_menu.hpp"
+#include "ui/loja.hpp"
 
 #include "repository/usuarios.hpp"
+#include "repository/desenvolvedores.hpp"
 #include "repository/jogos.hpp"
 
 #include "service/jogo.hpp"
@@ -19,8 +21,8 @@ _title = "Área do Desenvolvedor";
 _options.push_back("1 - Adicionar Jogo");
 _options.push_back("2 - Remover Jogo");
 _options.push_back("3 - Atualizar Jogo");
-_options.push_back("4 - Biblioteca");
-_options.push_back("5 - Loja");
+_options.push_back("4 - [Biblioteca]");
+_options.push_back("5 - [Loja]");
 }
 
     void DevMenu::salvar_usuario_conectado(const model::Usuario &usuario) const {
@@ -61,7 +63,9 @@ _options.push_back("5 - Loja");
     }
 
     Menu* DevMenu::next(unsigned option) {
-        while(option != 0) {
+        repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
+        model::Usuario usuario_conect = carregar_usuario_conectado();
+        model::Desenvolvedor dev = repositorio_devs.obterDesenvolvedor(usuario_conect.email());
             switch(option) {
                 case 1: {
 
@@ -88,7 +92,7 @@ _options.push_back("5 - Loja");
                     service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, valor, data_lancamento);
                     repositorio.adicionar_jogo(jogo);
                     std::cout << "Jogo Salvo..." << jogo.nome() << std::endl;
-                    break;
+                    return new DevMenu(dev);
                 }
 
                 case 2: {
@@ -101,7 +105,7 @@ _options.push_back("5 - Loja");
                     std::cin >> jogo_id;
 
                     repositorio.remover_jogo(jogo_id);
-                    break;
+                    return new DevMenu(dev);
                 }
 
                 case 3: {
@@ -126,16 +130,23 @@ _options.push_back("5 - Loja");
 
                     std::cout << "o- Será necessário informar o ID do jogo: " << std::endl;
                     std::cin >> jogo_id;
-                    break;
+                    return new DevMenu(dev);
                 }
                 case 4: {
                     repository::Usuarios repositorio_usuarios("repositorio_usuarios");
                     model::Usuario usuario_conect = carregar_usuario_conectado();
-                    model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
+                    std::string email = usuario_conect.email();
+                    model::Usuario usuario = repositorio_usuarios.obterUsuario(email);                     
                     return new Biblioteca(usuario);
                 }
+                case 5: {
+                    repository::Usuarios repositorio_usuarios("repositorio_usuarios");
+                    model::Usuario usuario_conect = carregar_usuario_conectado();
+                    //std::string email = ;
+                    model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());                     
+                    return new Loja(usuario);
+                }
             }
-        }
         return nullptr;
     }
 }
