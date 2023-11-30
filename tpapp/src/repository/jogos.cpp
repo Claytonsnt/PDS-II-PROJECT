@@ -42,7 +42,7 @@ service::Jogo Jogos::obter_jogo(const service::Jogo& jogo_procurado) const {
 void Jogos::exibir_jogos() {
     std::cout << "====================================" << std::endl;
     for (const auto& jogo : _jogos) {
-        std::cout << "[" << jogo.jogo_id() << "] " << "- " << jogo.nome() << std::endl;
+        std::cout << "[" << jogo.jogo_id() << "] " << "- " << jogo.nome()  << " || " << jogo.valor() << " || " << std::endl;
         };
     std::cout << "====================================" << std::endl;
     }
@@ -66,6 +66,9 @@ int Jogos::qnt_jogos() {
         count++;
     }
     return count;
+}
+std::vector<service::Jogo> Jogos::enviar_jogos() {
+    return _jogos;
 }
 
 void Jogos::carregar_jogos() {

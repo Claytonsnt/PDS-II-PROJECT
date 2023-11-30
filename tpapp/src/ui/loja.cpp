@@ -22,9 +22,6 @@ namespace tpapp::ui {
     salvar_usuario_conectado(_usuario);
 
     _title = "Loja";
-    std::string nome_arquivo = "repositorio_jogos";
-    repository::Jogos repositorio(nome_arquivo);
-    repositorio.exibir_jogos();
     std::cout << "***PARA COMPRAR ALGUM JOGO VOCÊ DEVE [2]BUSCAR JOGO OU [3]IR À LISTA DE DESEJOS***" << std::endl;
     _options.push_back("1 - Exibir jogos");
     _options.push_back("2 - buscar jogos");
@@ -74,19 +71,16 @@ namespace tpapp::ui {
 
     Menu *Loja::next(unsigned option) {
         model::Usuario usuario_conect = carregar_usuario_conectado();
+        std::string nome_arquivo = "repositorio_jogos";
+        repository::Jogos repositorio(nome_arquivo);
+        std::vector<service::Jogo> _jogos = repositorio.enviar_jogos();
         switch(option) {
             case 1: {
-                std::string nome_arquivo = "repositorio_jogos";
-                repository::Jogos repositorio(nome_arquivo);
-                repositorio.exibir_jogos();
                 std::cout << "> Como deseja exibir? " << std::endl;
                 std::cout << "> Você pode ordenar por: " << std::endl;
-                std:: cout << "\n[(1) - ALFABETICA] \n [(2) - GENERO] \n [(3) - AVALIAÇÃO] \n [(4) - DATA]" << std::endl; // criar logica da data
+                std:: cout << " \n [(1) - ALFABETICA] \n [(2) - GENERO] \n [(3) - AVALIAÇÃO] \n [(4) - DATA]" << std::endl; // criar logica da data
                 unsigned ordem;
                 std::cin >> ordem;
-
-                Loja carregar_jogos_arquivo(std::string nome_arquivo);
-
                 switch(ordem) {
                     case 1: {
                         std::vector<service::Jogo> jogos_ordenados = _jogos;
@@ -96,11 +90,8 @@ namespace tpapp::ui {
                         });
                         std::cout << "Jogos em ordem alfabética:\n";
                         for (const auto& jogo : jogos_ordenados) {
-                            std::cout << jogo.nome() << std::endl;
+                            std::cout << "[" << jogo.jogo_id() << "] - " << jogo.nome() << " || " << jogo.valor() << " R$ || " << std::endl;
                         }
-                        unsigned sair = 0;
-                        //std::cout << "> Deseja voltar a loja? [0]-SIM [1]-NÃO. " << std::endl;
-                        //std::cin >> sair;
                         break;
                     }
                     case 2: {
@@ -112,20 +103,16 @@ namespace tpapp::ui {
 
                         for(const auto& [genero, jogos]: jogos_genero) {
                             for(const auto& jogo: jogos) {
-                                std::cout <<"[" << genero << "] - " << jogo.nome() << std::endl;  
+                                std::cout <<"[" << genero << "] - " << jogo.nome() << " || " << jogo.valor() << " R$ || " << std::endl;  
                             }
-                            unsigned sair = 0;
-                            break;
                         }
+                        break;
                     }
                 }
                 return new Loja(usuario_conect);
             }
 
-            case 2: {
-                std::string nome_arquivo = "repositorio_jogos";
-                Loja carregar_jogos_arquivo(std::string nome_arquivo);
-                
+            case 2: {                
                 std::string pesquisa;
                 std::cout << "> Insira o nome do jogo: " << std::endl;
                 std::cin >> pesquisa;
@@ -154,7 +141,7 @@ namespace tpapp::ui {
                     for(const auto& jogo_encontrado: jogos_encontrados) {
                         std::cout << "[" << jogo_encontrado.nome() << "]  || " << jogo_encontrado.genero() << " || " << jogo_encontrado.valor() << " R$" << " || " << std::endl; 
                         unsigned opcao;
-                        std::cout << "> Deseja adicionar esse jogo ao carrinho de compras? [1]SIM [2]NÃO: " << std::endl;
+                        std::cout << "> Deseja adicionar esse jogo ao carrinho de compras, lista de desejos ou sair? \n[0] SAIR \n[1] CARRINHO DE COMPRAS \n[2] LISTA DE DESEJOS" << std::endl;
                         std::cin >> opcao;
                         if(opcao == 1) {
                             _carrinho_compras.push_back(jogo_encontrado);
@@ -166,6 +153,14 @@ namespace tpapp::ui {
                             } else {
                                 break;
                             }
+                        } else if(opcao == 2) {
+                            _lista_desejos.push_back(jogo_encontrado);
+                            std::cout << "Jogo adicionado a sua lista de desejos:" <<std::endl;
+                            for (const auto& desejo: _lista_desejos) {
+                                std::cout << "[" << desejo.nome() << "]  || " << desejo.genero() << " || " << desejo.valor() << " R$" << " || " << std::endl;
+                                return new Loja(usuario_conect);
+                            }
+
                         } else {
                             return new Loja(usuario_conect);
                         }
@@ -196,6 +191,7 @@ namespace tpapp::ui {
             }
 
             case 3: {
+                //adicionar um repositorio para lista de desejos
                 for(const auto& desejo: _lista_desejos) {
                     if(_lista_desejos.empty()) {
                         std::cout << "Sua Lista de Desejos está vazia, começe a desejar agora mesmo!" << std::endl;
@@ -205,13 +201,15 @@ namespace tpapp::ui {
                     }
                 }
                 unsigned opcao;
-                std::cout << "> Deseja finalizar as compras? [1]SIM [2]NÃO: " << std::endl;
+                std::cout << "> Deseja adquirir os itens da sua lista? [1]SIM [2]NÃO: " << std::endl;
+                std::cin >> opcao;
                 if(opcao == 1) {
                     unsigned valor_total = 0;
                     for(const auto& desejo: _lista_desejos) {
                         valor_total = valor_total + desejo.valor();
                     }
-                    //Loja::comprar(valor_total);
+                    //transacao comprar(valor_total)
+                    //std::cout << "> Valor total dos itens da sua lista : " << valor_total << "R$" << std::endl;
                 }
                 else {
                     return new Loja(usuario_conect);
@@ -230,42 +228,5 @@ namespace tpapp::ui {
             }
         }
         return nullptr;
-    }
-
-        
-
-    void Loja::salvar_jogos_arquivo(const std::string& nome_arquivo) const {
-        std::ofstream arquivo(nome_arquivo);
-
-        if (arquivo.is_open()) {
-            for (const auto& jogo : _jogos) {
-                arquivo << jogo.jogo_id() << ',' << jogo.nome() << ',' << jogo.desenvolvedora() << ',' << jogo.genero() << ',' << jogo.valor() << ',' << jogo.data_lancamento() << '\n';
-            }
-            arquivo.close();
-            std::cout << "> Dados dos jogos salvos em " << nome_arquivo << std::endl;
-        } else {
-            std::cerr << "> Erro ao abrir o arquivo " << nome_arquivo << std::endl;
-        }
-    }
-
-    void Loja::carregar_jogos_arquivo(const std::string& nome_arquivo) {
-        std::ifstream arquivo(nome_arquivo);
-
-        if (arquivo.is_open()) {
-            _jogos.clear();
-
-            int jogo_id;
-            std::string nome, desenvolvedora_id, genero, data_lancamento;
-            double valor;
-
-            while (arquivo >> jogo_id >> nome >> desenvolvedora_id >> genero >> valor >> data_lancamento ) {
-                service::Jogo jogo(jogo_id, nome, desenvolvedora_id, genero, valor, data_lancamento);
-                _jogos.push_back(jogo);
-            }
-            arquivo.close();
-            std::cout << "> Dados dos jogos carregados de " << nome_arquivo << std::endl;
-        } else {
-            std:: cerr << "> ERRO para carregar os jogos de " << nome_arquivo << std::endl;
-        }
     }
 }
