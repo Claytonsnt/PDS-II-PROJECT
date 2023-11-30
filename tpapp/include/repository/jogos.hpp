@@ -17,10 +17,14 @@ public:
     void atualizar_jogo(int jogo_id, const service::Jogo& novo_jogo);
     service::Jogo obter_jogo(const service::Jogo& jogo) const;
     std::vector<service::Jogo> enviar_jogos();
+
     int qnt_jogos();
 
 private:
     std::string _arquivo_jogos;
     std::vector<service::Jogo> _jogos;
+
+    void carregar_jogos();
+    void salvar_jogos() const;
 };
 }

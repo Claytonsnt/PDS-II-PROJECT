@@ -79,7 +79,7 @@ void Jogos::carregar_jogos() {
         double valor;
         int jogo_id;
         while (arquivo >> jogo_id >> nome >> desenvolvedora >> genero >> data_lancamento >> valor) {
-            service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, data_lancamento, valor);
+            service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, valor, data_lancamento);
             _jogos.push_back(jogo);
         }
     } else {
