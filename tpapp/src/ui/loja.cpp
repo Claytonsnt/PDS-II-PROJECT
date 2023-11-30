@@ -223,7 +223,7 @@ namespace tpapp::ui {
             
             case 5: {
                 repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
-                model::Desenvolvedor dev = repositorio_devs.obterDesenvolvedor(usuario_conect.email());
+                model::Desenvolvedor dev = repositorio_devs.obter_desenvolvedor(usuario_conect.email());
                 return new DevMenu(dev);
             }
         }
