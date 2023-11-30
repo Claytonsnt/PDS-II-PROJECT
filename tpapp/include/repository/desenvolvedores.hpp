@@ -13,6 +13,8 @@ public:
     model::Desenvolvedor obter_desenvolvedor(const std::string& email) const;
     void adicionar_desenvolvedor(const model::Desenvolvedor& desenvolvedor);
     void salvar_desenvolvedores() const;
+    void alterar_desenvolvedor(const model::Desenvolvedor& dev);
+
 
 private:
     std::string _arquivo_desenvolvedores;

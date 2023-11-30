@@ -2,6 +2,8 @@
 #include "model/desenvolvedor.hpp"
 
 #include <fstream>
+#include <iostream>
+#include <algorithm>
 
 namespace tpapp::repository {
 Desenvolvedores::Desenvolvedores(const std::string& nome_arquivo): _arquivo_desenvolvedores(nome_arquivo) {
@@ -20,6 +22,20 @@ model::Desenvolvedor Desenvolvedores::obter_desenvolvedor(const std::string& ema
 void Desenvolvedores::adicionar_desenvolvedor(const model::Desenvolvedor& desenvolvedor) {
     _desenvolvedores.push_back(desenvolvedor);
     salvar_desenvolvedores();
+}
+
+void Desenvolvedores::alterar_desenvolvedor(const model::Desenvolvedor& novo_dev) {
+    std::string email = novo_dev.email();
+    auto it = std::find_if(_desenvolvedores.begin(), _desenvolvedores.end(), [email] (const model::Desenvolvedor& dev) {
+        return dev.email() == email;
+    });
+    if (it != _desenvolvedores.end()) {
+        _desenvolvedores.erase(it);
+        _desenvolvedores.push_back(novo_dev);
+        std::cout << "Desenvolvedor atualizado." << std::endl;
+    } else {
+        std::cout << "Não foi possível atualizar o desenvolvedor." << std::endl;
+    }
 }
 
 void Desenvolvedores::salvar_desenvolvedores() const {

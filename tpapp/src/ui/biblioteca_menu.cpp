@@ -169,8 +169,13 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 usuario_conect.alterar_saldo(valor);
                 repository::Usuarios rep_usuario("repositorio_usuarios");
                 repository::Desenvolvedores rep_dev("repositorio_desenvolvedores");
+                rep_usuario.alterar_usuario(usuario_conect);
                 rep_usuario.salvar_usuarios();
-                rep_dev.salvar_desenvolvedores();
+                if(usuario_conect.desenvolvedor()){
+                    model::Desenvolvedor dev_conect = rep_dev.obter_desenvolvedor(usuario_conect.email());
+                    rep_dev.alterar_desenvolvedor(dev_conect);
+                    rep_dev.salvar_desenvolvedores();
+                }
                 return new Biblioteca(usuario_conect);
             }
             case 6: {

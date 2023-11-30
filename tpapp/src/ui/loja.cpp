@@ -140,7 +140,7 @@ namespace tpapp::ui {
 
                 if (jogos_encontrados.empty()) {
                     std::cout << "Nenhum jogo encontrado com o termo '" << pesquisa << "'." << std::endl;
-                    break;
+                    return new Loja(usuario_conect);
                 } 
                 else if (count == 1) {
                     for(const auto& jogo_encontrado: jogos_encontrados) {
@@ -158,7 +158,7 @@ namespace tpapp::ui {
                                 repository::Transacoes repositorio_transacoes(nome_arquivo);
                                 repositorio_transacoes.comprar(jogo_encontrado, usuario_conect);
                             } else {
-                                break;
+                                return new Loja(usuario_conect);
                             }
                         } else if(opcao == 2) {
                             _lista_desejos.push_back(jogo_encontrado);

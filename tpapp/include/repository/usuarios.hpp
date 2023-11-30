@@ -16,6 +16,7 @@ public:
     model::Usuario obter_usuario(const std::string& email) const;
     int qnt_usuarios();
     void salvar_usuarios() const;
+    void alterar_usuario(const model::Usuario& usuario);
 
 private:
     std::string _arquivo_usuarios;

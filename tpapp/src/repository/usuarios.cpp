@@ -2,6 +2,9 @@
 #include "model/usuario.hpp"
 
 #include <fstream>
+#include <iostream>
+#include <algorithm>
+
 
 namespace tpapp::repository {
 
@@ -31,6 +34,20 @@ void Usuarios::adicionar_usuario(const model::Usuario& usuario) {
     _usuarios.push_back(usuario);
     salvar_usuarios();
     return;
+}
+
+void Usuarios::alterar_usuario(const model::Usuario& novo_usuario) {
+    std::string email = novo_usuario.email();
+    auto it = std::find_if(_usuarios.begin(), _usuarios.end(), [email] (const model::Usuario& usuario) {
+        return usuario.email() == email;
+    });
+    if (it != _usuarios.end()) {
+        _usuarios.erase(it);
+        _usuarios.push_back(novo_usuario);
+        std::cout << "Usuario atualizado." << std::endl;
+    } else {
+        std::cout << "Não foi possível atualizar o usuário." << std::endl;
+    }
 }
 
 int Usuarios::qnt_usuarios() {
