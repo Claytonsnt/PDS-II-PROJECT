@@ -162,7 +162,6 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 }
                 }
                 
-
             case 5: {
                 return new Loja(usuario_conect);
             }

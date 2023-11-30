@@ -1,9 +1,15 @@
+#include "repository/bibliotecas.hpp"
+#include "repository/transacoes.hpp"
+#include "repository/jogos.hpp"
+
+#include "service/transacao.hpp"
+#include "service/carteira.hpp"
+#include "service/jogo.hpp"
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
-#include "repository/transacoes.hpp"
-#include "service/transacao.hpp"
 
 namespace tpapp::repository {
 
@@ -14,6 +20,10 @@ Transacoes::Transacoes(const std::string& nome_arquivo): _arquivo_transacoes(nom
 void Transacoes::adicionar_transacao(const service::Transacao& transacao) {
     _transacoes.push_back(transacao);
     return;
+}
+
+void Transacoes::comprar(unsigned saldo_carteira, unsigned valor) {
+    
 }
 
 void Transacoes::carregar_transacoes() {

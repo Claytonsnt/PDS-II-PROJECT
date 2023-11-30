@@ -14,6 +14,7 @@ public:
     void adicionar_transacao(const service::Transacao& transacao);
     void carregar_transacoes();
     void salvar_transacoes();
+    void comprar(unsigned saldo_carteira, unsigned valor);
     
 private:
     std::string _arquivo_transacoes;
