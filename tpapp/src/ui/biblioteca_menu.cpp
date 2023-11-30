@@ -10,6 +10,7 @@
 #include "repository/usuarios.hpp"
 #include "repository/desenvolvedores.hpp"
 #include "repository/jogos.hpp"
+#include "repository/bibliotecas.hpp"
 
 #include <iostream>
 #include <string>
@@ -70,15 +71,18 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
     Menu *Biblioteca::next(unsigned option) {
         model::Usuario usuario_conect = carregar_usuario_conectado();
-        std::string nome_arquivo = "repositorio_bibliotecas";
-        //repository::Jogos repositorio(nome_arquivo);  //alterar para repositorio de biblioteca 
-        //std::vector<service::Jogo> _jogos = repositorio.enviar_jogos();
+        std::string nome_arquivo = "Biblioteca - " + usuario_conect.usuario_login();
+        repository::Bibliotecas repositorio(nome_arquivo);
+        std::vector<service::Jogo> _biblioteca = repositorio.enviar_biblioteca();
         switch(option) {
             case 1: {
-                std::string nome_arquivo = "BIBLIOTECA - " + _usuario.usuario_login();
                 std::cout << "Jogos na biblioteca: " << std::endl;
-                for(const service::Jogo& jogo : _jogos) {
-                std::cout << jogo.nome() << std::endl;
+                if (_biblioteca.empty()) {
+                    std::cout << "Sua biblioteca está vazia :(" << std::endl;
+                }else {
+                    for(const service::Jogo& jogo : _biblioteca) {
+                    std::cout << "|| " << jogo.jogo_id() << " || " << jogo.nome() << std::endl;
+                    }
                 }
                 return new Biblioteca(usuario_conect);
                 }
@@ -89,7 +93,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 std::cin >> nome_jogo;
 
                 std::vector<service::Jogo> jogos_encontrados;
-                for (const auto& jogo : _jogos) {
+                for (const auto& jogo : _biblioteca) {
                     std::string nome_jogo_lower_case = jogo.nome();
                     std::transform(nome_jogo_lower_case.begin(), nome_jogo_lower_case.end(), nome_jogo_lower_case.begin(), ::tolower);
                     std::string pesquisa_lower_case = nome_jogo;
@@ -104,7 +108,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                     count++;
                 }
 
-                if(_jogos.empty()) {
+                if(_biblioteca.empty()) {
                     std::cout << "Sua biblioteca está vazia." << std::endl;
                     return new Biblioteca(usuario_conect);
                 } 
@@ -121,17 +125,17 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
             }
             case 3: {
                 std::cout << "Jogos na biblioteca: " << std::endl;
-                if(_jogos.empty()){
+                if(_biblioteca.empty()){
                     std::cout << "Sua biblioteca está vazia." << std::endl;
                     return new Biblioteca(usuario_conect);
                 }else {
-                for(const service::Jogo& jogo : _jogos) {
+                for(const service::Jogo& jogo : _biblioteca) {
                 std::cout <<"ID: " <<jogo.jogo_id() << " - " << jogo.nome() << std::endl;
                 }
                 int id;
                 std::cout << "> Digite o ID do jogo que deseja adicionar aos Favoritos" << std::endl;
                 std:: cin >> id; 
-                for(const service::Jogo& jogo : _jogos) {
+                for(const service::Jogo& jogo : _biblioteca) {
                     if (jogo.jogo_id() == id) {
                         _favoritos.push_back(jogo);
                         std::cout << "O jogo " << jogo.nome() << " foi adicionado aos favoritos." << std::endl;
@@ -160,9 +164,6 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 
 
             case 5: {
-                //repository::Usuarios repositorio_usuarios("repositorio_usuarios");
-                //model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
-                model::Usuario usuario_conect = carregar_usuario_conectado();
                 return new Loja(usuario_conect);
             }
 
