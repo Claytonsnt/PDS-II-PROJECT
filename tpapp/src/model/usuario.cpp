@@ -33,6 +33,9 @@ bool Usuario::desenvolvedor() const {
 unsigned Usuario::saldo() const {
   return _saldo;
 }
+model::InfoPessoal Usuario::info() const {
+  return _info;
+}
 
 void Usuario::alterar_saldo(unsigned valor) {
   _saldo = _saldo + valor;

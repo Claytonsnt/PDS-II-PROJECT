@@ -32,7 +32,8 @@ void Desenvolvedores::alterar_desenvolvedor(const model::Desenvolvedor& novo_dev
     if (it != _desenvolvedores.end()) {
         _desenvolvedores.erase(it);
         _desenvolvedores.push_back(novo_dev);
-        std::cout << "Desenvolvedor atualizado." << std::endl;
+        Desenvolvedores::salvar_desenvolvedores();
+        //std::cout << "Desenvolvedor atualizado." << std::endl;
     } else {
         std::cout << "Não foi possível atualizar o desenvolvedor." << std::endl;
     }
@@ -70,7 +71,7 @@ void Desenvolvedores::carregar_desenvolvedores() {
         }
         arquivo.close();
     } else {
-        std::cerr << " ERRO ao abrir o arquivo de Usuários." << std::endl;
+        //std::cerr << " ERRO ao abrir o arquivo de Usuários." << std::endl;
     }
 }
 }

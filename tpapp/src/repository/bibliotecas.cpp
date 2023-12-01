@@ -10,9 +10,16 @@ namespace tpapp::repository {
         carregar_biblioteca();
     }
 
-    void Bibliotecas::adicionar_jogo(const service::Jogo& jogo) {
+    bool Bibliotecas::adicionar_jogo(const service::Jogo& jogo) {
+        for (const auto& item:_biblioteca) {
+            if(jogo.nome() == item.nome()){
+                std::cout << ">Esse jogo já está na sua biblioteca." << std::endl;
+                return false;
+            }
+        }
         _biblioteca.push_back(jogo);
         salvar_biblioteca();
+        return true;
     }
 
     std::vector<service::Jogo> Bibliotecas::enviar_biblioteca() {

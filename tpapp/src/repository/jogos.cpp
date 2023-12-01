@@ -78,7 +78,7 @@ void Jogos::carregar_jogos() {
         std::string nome, desenvolvedora, genero, data_lancamento;
         double valor;
         int jogo_id;
-        while (arquivo >> jogo_id >> nome >> desenvolvedora >> genero >> data_lancamento >> valor) {
+        while (arquivo >> jogo_id >> nome >> desenvolvedora >> genero >> valor >> data_lancamento) {
             service::Jogo jogo(jogo_id, nome, desenvolvedora, genero, valor, data_lancamento);
             _jogos.push_back(jogo);
         }

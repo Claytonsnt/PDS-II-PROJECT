@@ -11,7 +11,7 @@ class Bibliotecas {
 public:
     Bibliotecas(const std::string &nome_arquivo);
 
-    void adicionar_jogo(const service::Jogo& jogo);
+    bool adicionar_jogo(const service::Jogo& jogo);
     std::vector<service::Jogo> enviar_biblioteca();
 
 private:

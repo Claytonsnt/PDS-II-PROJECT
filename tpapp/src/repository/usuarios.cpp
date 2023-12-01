@@ -44,7 +44,8 @@ void Usuarios::alterar_usuario(const model::Usuario& novo_usuario) {
     if (it != _usuarios.end()) {
         _usuarios.erase(it);
         _usuarios.push_back(novo_usuario);
-        std::cout << "Usuario atualizado." << std::endl;
+        //std::cout << "Usuario atualizado." << std::endl;
+        Usuarios::salvar_usuarios();
     } else {
         std::cout << "Não foi possível atualizar o usuário." << std::endl;
     }
@@ -78,7 +79,7 @@ void Usuarios::carregar_usuarios() {
         }
         arquivo.close();
     } else {
-        std::cerr << "Erro ao abrir o arquivo de usuários." << std::endl;
+        //std::cerr << "Erro ao abrir o arquivo de usuários." << std::endl;
     }
 }
 

@@ -1,6 +1,8 @@
 #include "repository/bibliotecas.hpp"
 #include "repository/transacoes.hpp"
 #include "repository/jogos.hpp"
+#include "repository/usuarios.hpp"
+#include "repository/desenvolvedores.hpp"
 
 #include "service/transacao.hpp"
 #include "service/carteira.hpp"
@@ -38,13 +40,25 @@ void Transacoes::comprar(const service::Jogo& jogo, const model::Usuario& usuari
             std::cout << "> Seu saldo é insufuciente para realizar a compra." << std::endl;
             return;
         } else {
+            unsigned novo_saldo = usuario.saldo() - jogo.valor();
+            model::Usuario novo_usuario(usuario.usuario_id(),usuario.usuario_login(), usuario.email(), usuario.info(), usuario.desenvolvedor(), novo_saldo);
+            repository::Usuarios repositorio_usuarios("repositorio_usuarios");
+            repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
+            repositorio_usuarios.alterar_usuario(novo_usuario);
+            model::Desenvolvedor dev = repositorio_devs.obter_desenvolvedor(novo_usuario.email());
+            repositorio_devs.alterar_desenvolvedor(dev);
+
             std::string nome_arquivo = "Biblioteca - " + usuario.usuario_login();
             repository::Bibliotecas repositorio(nome_arquivo);
-            repositorio.adicionar_jogo(jogo);
-            service::Transacao transacao("compra", jogo.valor(), "carteira", jogo.data_lancamento()); //implementar data na transacao
-            Transacoes::adicionar_transacao(transacao);
-            std::cout << "> Seu jogo já está disponível na sua biblioteca." << std::endl;
-            return;
+            if(repositorio.adicionar_jogo(jogo)) {
+                service::Transacao transacao("compra", jogo.valor(), "carteira", jogo.data_lancamento()); //implementar data na transacao
+                Transacoes::adicionar_transacao(transacao);
+                std::cout << "> Seu jogo já está disponível na sua biblioteca." << std::endl;
+                return;
+            } else {
+                return;
+            }
+            
         }
     } else {
         std::cout << ">Voltando a loja..." << std::endl;
@@ -62,8 +76,6 @@ void Transacoes::carregar_transacoes() {
             service::Transacao transacao(tipo, valor, forma_pagamento, data);
             _transacoes.push_back(transacao);
         }
-    } else {
-        std::cerr << "Erro ao abrir o arquivo de transacoes." << std::endl;
     }
     return;
 }

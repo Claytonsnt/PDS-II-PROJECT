@@ -20,6 +20,7 @@ public:
     unsigned saldo() const;
     bool desenvolvedor() const;
     void alterar_saldo(unsigned valor);
+    model::InfoPessoal info() const;
 
     std::string to_string() const;
 

@@ -154,7 +154,7 @@ namespace tpapp::ui {
                             std::cout << "> Deseja finalizar as compras? [1]SIM [2]NÃO: "   <<std::endl;
                             std::cin >> opcao1;
                             if(opcao1 == 1) {
-                                std::string nome_arquivo = "Transacoes - " + usuario_conect.usuario_id();
+                                std::string nome_arquivo = "Transacoes - " + usuario_conect.usuario_login();
                                 repository::Transacoes repositorio_transacoes(nome_arquivo);
                                 repositorio_transacoes.comprar(jogo_encontrado, usuario_conect);
                             } else {
@@ -209,6 +209,7 @@ namespace tpapp::ui {
                         }                                
                     }
                 }
+                return new Biblioteca(usuario_conect);
             }
 
             case 3: {
@@ -254,6 +255,7 @@ namespace tpapp::ui {
                 else {
                     return new Loja(usuario_conect);
                 }
+                return new Loja(usuario_conect);
             }
 
             case 4: {
