@@ -14,6 +14,7 @@ public:
     void adicionar_desenvolvedor(const model::Desenvolvedor& desenvolvedor);
     void salvar_desenvolvedores() const;
     void alterar_desenvolvedor(const model::Desenvolvedor& dev);
+    bool verificar_desenvolvedora(const std::string& id);
 
 
 private:

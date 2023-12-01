@@ -4,11 +4,12 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <map>
 
 namespace tpapp::repository {
 Desenvolvedores::Desenvolvedores(const std::string& nome_arquivo): _arquivo_desenvolvedores(nome_arquivo) {
     carregar_desenvolvedores();
-} 
+}
 
 model::Desenvolvedor Desenvolvedores::obter_desenvolvedor(const std::string& email) const {
     for (const auto& desenvolvedor : _desenvolvedores) {
@@ -56,9 +57,9 @@ void Desenvolvedores::carregar_desenvolvedores() {
     std::ifstream arquivo(_arquivo_desenvolvedores, std::ios::in);
 
     if(arquivo.is_open()) {
-        std::string usuario_login, email, nome, sobrenome;
+        std::string usuario_login, email, nome, sobrenome, desenvolvedora_id;
         int usuario_id;
-        unsigned idade, desenvolvedora_id, saldo;
+        unsigned idade, saldo;
 
         while(arquivo >> usuario_id >> usuario_login >> desenvolvedora_id >> email >> nome >> sobrenome >> idade >> saldo) {
             model::InfoPessoal info;
@@ -74,4 +75,18 @@ void Desenvolvedores::carregar_desenvolvedores() {
         //std::cerr << " ERRO ao abrir o arquivo de Usuários." << std::endl;
     }
 }
+
+bool Desenvolvedores::verificar_desenvolvedora(const std::string& id) {
+    std::map<std::string, std::string> desenvolvedoras = {
+        {"#0000", "tpapp"},
+        {"#0001", "Riot Games"},
+        {"#0002", "Mojang"},
+        {"#0003", "Valve"},
+        {"#0004", "InnerSloth"},
+        {"#0005", "Epic Games"}        
+    };
+    auto dev = desenvolvedoras.find(id);
+    return dev != desenvolvedoras.end();
+}
+
 }

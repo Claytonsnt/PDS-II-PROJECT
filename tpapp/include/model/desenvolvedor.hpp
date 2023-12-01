@@ -6,11 +6,14 @@
 namespace tpapp::model {
 class Desenvolvedor : public Usuario {
 public:
-    Desenvolvedor(int usuario_id, std::string usuario_login, unsigned desenvolvedora_id, std::string email,
+
+    Desenvolvedor(int usuario_id, std::string usuario_login, std::string desenvolvedora_id, std::string email,
 	              InfoPessoal info, unsigned saldo);
-    unsigned desenvolvedora_id() const;
+    std::string desenvolvedora_id() const;
     std::string to_string() const;
+
 private:
-    unsigned _desenvolvedora_id;
+
+    std::string _desenvolvedora_id;
 };
 }
