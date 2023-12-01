@@ -45,7 +45,7 @@ void Desenvolvedores::salvar_desenvolvedores() const {
 
     if (arquivo.is_open()) {
         for (const auto& dev : _desenvolvedores) {
-            arquivo << dev.usuario_id() << ' ' << dev.usuario_login() <<' '<< dev.desenvolvedora_id() <<' '<< dev.email() <<' '<< dev.nome()<<' '<< dev.idade() <<' '<< true << ' ' << dev.saldo() <<'\n';
+            arquivo << dev.usuario_id() << ' ' << dev.usuario_login() <<' ' << dev.senha() << ' ' << dev.desenvolvedora_id() <<' '<< dev.email() <<' '<< dev.nome()<<' '<< dev.idade() <<' '<< true << ' ' << dev.saldo() <<'\n';
         }
         arquivo.close();
     } else {
@@ -57,17 +57,17 @@ void Desenvolvedores::carregar_desenvolvedores() {
     std::ifstream arquivo(_arquivo_desenvolvedores, std::ios::in);
 
     if(arquivo.is_open()) {
-        std::string usuario_login, email, nome, sobrenome, desenvolvedora_id;
+        std::string usuario_login, email, nome, sobrenome, desenvolvedora_id, senha;
         int usuario_id;
         unsigned idade, saldo;
 
-        while(arquivo >> usuario_id >> usuario_login >> desenvolvedora_id >> email >> nome >> sobrenome >> idade >> saldo) {
+        while(arquivo >> usuario_id >> usuario_login >> senha >> desenvolvedora_id >> email >> nome >> sobrenome >> idade >> saldo) {
             model::InfoPessoal info;
             info.primeiro_nome = nome;
             info.sobrenome = sobrenome;
             info.idade = idade;
 
-            model::Desenvolvedor dev(usuario_id, usuario_login, desenvolvedora_id, email, info, saldo);
+            model::Desenvolvedor dev(usuario_id, usuario_login, senha, desenvolvedora_id, email, info, saldo);
             _desenvolvedores.push_back(dev);
         }
         arquivo.close();

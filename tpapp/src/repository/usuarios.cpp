@@ -21,6 +21,15 @@ bool Usuarios::verificar_usuario_email(const std::string& email) const {
     return false;
 }
 
+bool Usuarios::verificar_usuario_senha(const std::string& senha) const {
+    for (const auto& usuario : _usuarios) {
+        if (usuario.senha() == senha) {
+            return true;
+        }
+    }
+    return false;
+}
+
 model::Usuario Usuarios::obter_usuario(const std::string& email) const {
     for (const auto& usuario : _usuarios) {
         if (usuario.email() == email){
@@ -58,6 +67,16 @@ int Usuarios::qnt_usuarios() {
     }
     return count;
 }
+std::string Usuarios::criptografar_senha(std::string& senha) {
+    int chave = 7;
+    for (char& caractere: senha) {
+        if(isalpha(caractere)) {
+            char base = islower(caractere) ? 'a' : 'A';
+            caractere = static_cast<char>((caractere - base + chave) % 26 + base);
+        }
+    }
+    return senha;
+}
 
 void Usuarios::carregar_usuarios() {
     std::ifstream arquivo(_arquivo_usuarios, std::ios::in);
@@ -66,15 +85,15 @@ void Usuarios::carregar_usuarios() {
         int usuario_id;
         unsigned idade, saldo;
         bool desenvolvedor;
-        std::string usuario_login, email, nome, sobrenome;
+        std::string usuario_login, email, nome, sobrenome, senha;
         
-        while(arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor >> saldo) {
+        while(arquivo >> usuario_id >> usuario_login >> senha >> email >> nome >> sobrenome >> idade >> desenvolvedor >> saldo) {
             model::InfoPessoal info;
             info.primeiro_nome = nome;
             info.sobrenome = sobrenome;
             info.idade = idade;
 
-            model::Usuario usuario(usuario_id, usuario_login, email, info, desenvolvedor, saldo);
+            model::Usuario usuario(usuario_id, usuario_login, senha, email, info, desenvolvedor, saldo);
             _usuarios.push_back(usuario);
         }
         arquivo.close();
@@ -88,7 +107,7 @@ void Usuarios::salvar_usuarios() const {
 
     if (arquivo.is_open()) {
         for (const auto& usuario : _usuarios) {
-            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() << ' ' << usuario.saldo() <<'\n';
+            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.senha() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() << ' ' << usuario.saldo() <<'\n';
         }
         arquivo.close();
     } else {

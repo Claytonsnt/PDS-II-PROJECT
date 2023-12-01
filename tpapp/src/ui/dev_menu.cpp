@@ -31,7 +31,7 @@ _options.push_back("5 - [Loja]");
         arquivo.clear();
 
         if (arquivo.is_open()) {
-            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() << ' ' << usuario.saldo() << std::endl;
+            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.senha() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() << ' ' << usuario.saldo() << std::endl;
             arquivo.close();
         } else {
             std::cerr << "> Erro ao salvar usuário conectado " << nome_arquivo << std::endl;
@@ -46,15 +46,15 @@ _options.push_back("5 - [Loja]");
         int usuario_id;
         unsigned idade, saldo;
         bool desenvolvedor;
-        std::string usuario_login, email, nome, sobrenome;
+        std::string usuario_login, email, nome, sobrenome, senha;
         
-        arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor >> saldo;
+        arquivo >> usuario_id >> usuario_login >> senha >> email >> nome >> sobrenome >> idade >> desenvolvedor >> saldo;
         model::InfoPessoal info;
         info.primeiro_nome = nome;
         info.sobrenome = sobrenome;
         info.idade = idade;
 
-        model::Usuario usuario_conectado(usuario_id, usuario_login, email, info, desenvolvedor, saldo);
+        model::Usuario usuario_conectado(usuario_id, usuario_login, senha, email, info, desenvolvedor, saldo);
         arquivo.close();
         return usuario_conectado;
     } else {

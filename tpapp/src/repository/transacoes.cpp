@@ -41,7 +41,7 @@ void Transacoes::comprar(const service::Jogo& jogo, const model::Usuario& usuari
             return;
         } else {
             unsigned novo_saldo = usuario.saldo() - jogo.valor();
-            model::Usuario novo_usuario(usuario.usuario_id(),usuario.usuario_login(), usuario.email(), usuario.info(), usuario.desenvolvedor(), novo_saldo);
+            model::Usuario novo_usuario(usuario.usuario_id(),usuario.usuario_login(), usuario.senha(), usuario.email(), usuario.info(), usuario.desenvolvedor(), novo_saldo);
             repository::Usuarios repositorio_usuarios("repositorio_usuarios");
             repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
             repositorio_usuarios.alterar_usuario(novo_usuario);

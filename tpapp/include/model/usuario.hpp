@@ -11,11 +11,12 @@ unsigned idade;
 
 class Usuario {
 public:
-    Usuario(int usuario_id, std::string usuario_login, std::string email, InfoPessoal info, bool desenvolvedor, unsigned saldo);
+    Usuario(int usuario_id, std::string usuario_login, std::string senha, std::string email, InfoPessoal info, bool desenvolvedor, unsigned saldo);
     int usuario_id() const;
     std::string usuario_login() const;
     std::string email() const;
     std::string nome() const;
+    std::string senha() const;
     unsigned idade() const;
     unsigned saldo() const;
     bool desenvolvedor() const;
@@ -28,6 +29,7 @@ private:
     int _usuario_id;
     std::string _usuario_login;
     std::string _email;
+    std::string _senha;
     InfoPessoal _info;
     bool _desenvolvedor;
     unsigned _saldo;

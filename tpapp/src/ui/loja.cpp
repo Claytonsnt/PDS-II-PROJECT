@@ -55,15 +55,15 @@ namespace tpapp::ui {
             int usuario_id;
             unsigned idade, saldo;
             bool desenvolvedor;
-            std::string usuario_login, email, nome, sobrenome;
+            std::string usuario_login, email, nome, sobrenome, senha;
             
-            arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor >> saldo;
+            arquivo >> usuario_id >> usuario_login >> email >> senha >> nome >> sobrenome >> idade >> desenvolvedor >> saldo;
             model::InfoPessoal info;
             info.primeiro_nome = nome;
             info.sobrenome = sobrenome;
             info.idade = idade;
 
-            model::Usuario usuario_conectado(usuario_id, usuario_login, email, info, desenvolvedor, saldo);
+            model::Usuario usuario_conectado(usuario_id, usuario_login, senha, email, info, desenvolvedor, saldo);
             arquivo.close();
             return usuario_conectado;
         } else {

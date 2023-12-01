@@ -61,9 +61,14 @@ Menu *LoginMenu::next(unsigned option) {
             std::string nome_arquivo = "repositorio_usuarios";
             repository::Usuarios repositorio(nome_arquivo);
 
+            std::string senha;
+            std::cout << ">Digite sua senha: " << std::endl;
+            std::cin >> senha;
+            std::string senha_cripto = repositorio.criptografar_senha(senha);
+
             std::cout << "Verificando usuário: " << email << std::endl;
 
-            if (repositorio.verificar_usuario_email(email)) {
+            if (repositorio.verificar_usuario_email(email) && repositorio.verificar_usuario_senha(senha_cripto)) {
                 std::cout << "Usuário verificado." << std::endl;
                 model::Usuario usuario = repositorio.obter_usuario(email);
                 if (usuario.desenvolvedor() == true) {
@@ -75,7 +80,7 @@ Menu *LoginMenu::next(unsigned option) {
                     return new Biblioteca(usuario);
                 }    
             } else {
-                std::cout << "Usuário não encontrado." << std::endl;
+                std::cout << "Senha ou email inválidos." << std::endl;
                 return new LoginMenu();
             }
             break;
@@ -88,7 +93,6 @@ Menu *LoginMenu::next(unsigned option) {
             std::cout << "> Digite o nome de usuário desejado: ";
             std::cin >> usuario_login;
 
-            
             std::string email = ler_autenticacao();
 
             std::string nome_arquivo = "repositorio_usuarios";
@@ -101,6 +105,12 @@ Menu *LoginMenu::next(unsigned option) {
                 std::cout << "E-mail disponível." << std::endl;
             }
 
+            std::string senha;
+            std::cout << ">Digite a senha desejada: ";
+            std::cin >> senha;
+
+            std::string senha_criptografada = repositorio.criptografar_senha(senha); 
+
             int usuario_id = repositorio.qnt_usuarios();
 
             model::InfoPessoal info;
@@ -108,7 +118,7 @@ Menu *LoginMenu::next(unsigned option) {
 
             unsigned saldo = 00.00;
 
-            model::Usuario usuario(usuario_id, usuario_login, email, info, desenvolvedor, saldo);
+            model::Usuario usuario(usuario_id, usuario_login, email, senha_criptografada, info, desenvolvedor, saldo);
             
             repositorio.adicionar_usuario(usuario);
             
@@ -147,6 +157,12 @@ Menu *LoginMenu::next(unsigned option) {
                 std::cout << "E-mail disponível." << std::endl;
             }
 
+            std::string senha;
+            std::cout << ">Digite a senha desejada: ";
+            std::cin >> senha;
+
+            std::string senha_criptografada = repositorio_usu.criptografar_senha(senha);
+
             int usuario_id = repositorio_usu.qnt_usuarios();
 
             model::InfoPessoal info;
@@ -154,8 +170,8 @@ Menu *LoginMenu::next(unsigned option) {
 
             unsigned saldo = 00.00;
 
-            model::Desenvolvedor dev(usuario_id, usuario_login, desenvolvedora_id, email, info, saldo);
-            model::Usuario usuario(usuario_id, usuario_login, email, info, true, saldo);
+            model::Desenvolvedor dev(usuario_id, usuario_login, senha_criptografada, desenvolvedora_id, email, info, saldo);
+            model::Usuario usuario(usuario_id, usuario_login, senha_criptografada, email, info, true, saldo);
 
             repositorio_dev.adicionar_desenvolvedor(dev);
             repositorio_usu.adicionar_usuario(usuario);
