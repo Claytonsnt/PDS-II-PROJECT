@@ -12,6 +12,7 @@
 #include "repository/desenvolvedores.hpp"
 #include "repository/jogos.hpp"
 #include "repository/transacoes.hpp"
+#include "repository/lojas.hpp"
 
 #include <iostream>
 #include <string>
@@ -194,7 +195,7 @@ namespace tpapp::ui {
                             std::cout << "> Deseja finalizar as compras? [1]SIM [2]NÃO: "  <<std::endl;
                             std::cin >> opcao1;
                             if(opcao1 == 1) {
-                                std::string nome_arquivo = "Transacoes - " + usuario_conect.usuario_id();
+                                std::string nome_arquivo = "Transacoes - " + usuario_conect.usuario_login();
                                 repository::Transacoes repositorio_transacoes(nome_arquivo);
 
                                 for (const auto& jogo_carrinho: _carrinho_compras) {
@@ -214,7 +215,11 @@ namespace tpapp::ui {
 
             case 3: {
                 std::cout << "\n> CARTEIRA: " << usuario_conect.saldo() << "R$" << std::endl;
-                //implementar a lista de desejos no repositorio de usuarios
+
+                std::string nome_arquivo = "Desejos - " + usuario_conect.usuario_login();
+                repository::Lojas repositorio_desejos(nome_arquivo);
+                std::vector<service::Jogo> _lista_desejos = repositorio_desejos.enviar_lista_desejos();
+
                 if(_lista_desejos.empty()) {
                     std::cout << "Sua Lista de Desejos está vazia, começe a desejar agora mesmo!" << std::endl;
                     return new Loja(usuario_conect);
@@ -227,7 +232,7 @@ namespace tpapp::ui {
                 std::cout << "> Deseja adquirir um item da sua lista, todos os itens ou sair? [1]UM ITEM [2]TODOS OS ITENS [3]SAIR " << std::endl;
                 std::cin >> opcao;
 
-                std::string nome_arquivo = "Transacoes - " + usuario_conect.usuario_id();
+                std::string nome_arquivo = "Transacoes - " + usuario_conect.usuario_login();
                 repository::Transacoes repositorio_transacoes(nome_arquivo);
 
                 if(opcao == 1) {
