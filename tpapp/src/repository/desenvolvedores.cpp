@@ -27,7 +27,7 @@ void Desenvolvedores::salvar_desenvolvedores() const {
 
     if (arquivo.is_open()) {
         for (const auto& dev : _desenvolvedores) {
-            arquivo << dev.usuario_id() << ' ' << dev.usuario_login() <<' '<< dev.desenvolvedora_id() <<' '<< dev.email() <<' '<< dev.nome()<<' '<< dev.idade() <<' '<< true <<'\n';
+            arquivo << dev.usuario_id() << " " << dev.usuario_login() << " " << dev.desenvolvedora_id() << " " << dev.email() << " " << dev.nome()<< " " << dev.idade() << " " << true << "\n";
         }
         arquivo.close();
     } else {
