@@ -1,0 +1,176 @@
+\hypertarget{classtpapp_1_1model_1_1Usuario}{}\doxysection{tpapp\+::model\+::Usuario Class Reference}
+\label{classtpapp_1_1model_1_1Usuario}\index{tpapp::model::Usuario@{tpapp::model::Usuario}}
+
+
+Inheritance diagram for tpapp\+::model\+::Usuario\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a347f1699d2172a73dde6c79f1f6e7a2c}{Usuario}} (int \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a83c54fef161c64535796b56412352849}{usuario\+\_\+id}}, std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_af8962614f210fa42e6950bb0b8f82eb4}{usuario\+\_\+login}}, std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a1b6bde50b218864407fb32307502447b}{senha}}, std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a02741c1392b62f15cf09f6799b58d974}{email}}, \mbox{\hyperlink{structtpapp_1_1model_1_1InfoPessoal}{Info\+Pessoal}} \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a95150d5f310155eb1599b9e8873926dd}{info}}, bool \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a2473b7683cc19a7ab06718438f68cee8}{desenvolvedor}}, unsigned \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_af2337bf2123e52db889e16b69e36772c}{saldo}})
+\begin{DoxyCompactList}\small\item\em Inicializa um usuário. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a83c54fef161c64535796b56412352849}{usuario\+\_\+id}} () const
+\item 
+std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_af8962614f210fa42e6950bb0b8f82eb4}{usuario\+\_\+login}} () const
+\item 
+std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a02741c1392b62f15cf09f6799b58d974}{email}} () const
+\item 
+std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a040e783f5cdee0c60f2ad39fcfe45518}{nome}} () const
+\item 
+std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a1b6bde50b218864407fb32307502447b}{senha}} () const
+\item 
+unsigned \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a6d03b2706208e00c55bac5e32ebd36e8}{idade}} () const
+\item 
+unsigned \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_af2337bf2123e52db889e16b69e36772c}{saldo}} () const
+\item 
+bool \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a2473b7683cc19a7ab06718438f68cee8}{desenvolvedor}} () const
+\item 
+void \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_ae104755a8ccfc0273764295258eb00b8}{alterar\+\_\+saldo}} (unsigned valor)
+\begin{DoxyCompactList}\small\item\em Altera o saldo do usuário. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtpapp_1_1model_1_1InfoPessoal}{model\+::\+Info\+Pessoal}} \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a95150d5f310155eb1599b9e8873926dd}{info}} () const
+\item 
+std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_afb03c32f76246ec318c08b6cae702ffa}{to\+\_\+string}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_a347f1699d2172a73dde6c79f1f6e7a2c}\label{classtpapp_1_1model_1_1Usuario_a347f1699d2172a73dde6c79f1f6e7a2c}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!Usuario@{Usuario}}
+\index{Usuario@{Usuario}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{Usuario()}{Usuario()}}
+{\footnotesize\ttfamily tpapp\+::model\+::\+Usuario\+::\+Usuario (\begin{DoxyParamCaption}\item[{int}]{usuario\+\_\+id,  }\item[{std\+::string}]{usuario\+\_\+login,  }\item[{std\+::string}]{senha,  }\item[{std\+::string}]{email,  }\item[{\mbox{\hyperlink{structtpapp_1_1model_1_1InfoPessoal}{Info\+Pessoal}}}]{info,  }\item[{bool}]{desenvolvedor,  }\item[{unsigned}]{saldo }\end{DoxyParamCaption})}
+
+
+
+Inicializa um usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em usuario\+\_\+id} & ID do usuário \\
+\hline
+{\em usuario\+\_\+login} & Login do usuário \\
+\hline
+{\em senha} & Senha do usuário \\
+\hline
+{\em email} & Email do usuário \\
+\hline
+{\em info} & Informações pessoais do usuário \\
+\hline
+{\em desenvolvedor} & Contém a informação se o usuário é ou não um desenvolvedor \\
+\hline
+{\em saldo} & Saldo da carteira do usuário \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_ae104755a8ccfc0273764295258eb00b8}\label{classtpapp_1_1model_1_1Usuario_ae104755a8ccfc0273764295258eb00b8}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!alterar\_saldo@{alterar\_saldo}}
+\index{alterar\_saldo@{alterar\_saldo}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{alterar\_saldo()}{alterar\_saldo()}}
+{\footnotesize\ttfamily void tpapp\+::model\+::\+Usuario\+::alterar\+\_\+saldo (\begin{DoxyParamCaption}\item[{unsigned}]{valor }\end{DoxyParamCaption})}
+
+
+
+Altera o saldo do usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & novo saldo \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_a2473b7683cc19a7ab06718438f68cee8}\label{classtpapp_1_1model_1_1Usuario_a2473b7683cc19a7ab06718438f68cee8}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!desenvolvedor@{desenvolvedor}}
+\index{desenvolvedor@{desenvolvedor}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{desenvolvedor()}{desenvolvedor()}}
+{\footnotesize\ttfamily bool tpapp\+::model\+::\+Usuario\+::desenvolvedor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+usuario é desenvolvedor ou não 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_a02741c1392b62f15cf09f6799b58d974}\label{classtpapp_1_1model_1_1Usuario_a02741c1392b62f15cf09f6799b58d974}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!email@{email}}
+\index{email@{email}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{email()}{email()}}
+{\footnotesize\ttfamily std\+::string tpapp\+::model\+::\+Usuario\+::email (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+email do usuário 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_a6d03b2706208e00c55bac5e32ebd36e8}\label{classtpapp_1_1model_1_1Usuario_a6d03b2706208e00c55bac5e32ebd36e8}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!idade@{idade}}
+\index{idade@{idade}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{idade()}{idade()}}
+{\footnotesize\ttfamily unsigned tpapp\+::model\+::\+Usuario\+::idade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+idade do usuário 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_a95150d5f310155eb1599b9e8873926dd}\label{classtpapp_1_1model_1_1Usuario_a95150d5f310155eb1599b9e8873926dd}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!info@{info}}
+\index{info@{info}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtpapp_1_1model_1_1InfoPessoal}{model\+::\+Info\+Pessoal}} tpapp\+::model\+::\+Usuario\+::info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+retorna as informações pessoais do usuário 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_a040e783f5cdee0c60f2ad39fcfe45518}\label{classtpapp_1_1model_1_1Usuario_a040e783f5cdee0c60f2ad39fcfe45518}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!nome@{nome}}
+\index{nome@{nome}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{nome()}{nome()}}
+{\footnotesize\ttfamily std\+::string tpapp\+::model\+::\+Usuario\+::nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+nome do usuário 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_af2337bf2123e52db889e16b69e36772c}\label{classtpapp_1_1model_1_1Usuario_af2337bf2123e52db889e16b69e36772c}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!saldo@{saldo}}
+\index{saldo@{saldo}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{saldo()}{saldo()}}
+{\footnotesize\ttfamily unsigned tpapp\+::model\+::\+Usuario\+::saldo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+saldo do usuário 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_a1b6bde50b218864407fb32307502447b}\label{classtpapp_1_1model_1_1Usuario_a1b6bde50b218864407fb32307502447b}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!senha@{senha}}
+\index{senha@{senha}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{senha()}{senha()}}
+{\footnotesize\ttfamily std\+::string tpapp\+::model\+::\+Usuario\+::senha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+senha do usuário 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_afb03c32f76246ec318c08b6cae702ffa}\label{classtpapp_1_1model_1_1Usuario_afb03c32f76246ec318c08b6cae702ffa}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string tpapp\+::model\+::\+Usuario\+::to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+uma string com as informações importantes do usuário 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_a83c54fef161c64535796b56412352849}\label{classtpapp_1_1model_1_1Usuario_a83c54fef161c64535796b56412352849}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!usuario\_id@{usuario\_id}}
+\index{usuario\_id@{usuario\_id}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{usuario\_id()}{usuario\_id()}}
+{\footnotesize\ttfamily int tpapp\+::model\+::\+Usuario\+::usuario\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+ID do usuário 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Usuario_af8962614f210fa42e6950bb0b8f82eb4}\label{classtpapp_1_1model_1_1Usuario_af8962614f210fa42e6950bb0b8f82eb4}} 
+\index{tpapp::model::Usuario@{tpapp::model::Usuario}!usuario\_login@{usuario\_login}}
+\index{usuario\_login@{usuario\_login}!tpapp::model::Usuario@{tpapp::model::Usuario}}
+\doxysubsubsection{\texorpdfstring{usuario\_login()}{usuario\_login()}}
+{\footnotesize\ttfamily std\+::string tpapp\+::model\+::\+Usuario\+::usuario\+\_\+login (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+login do usuário 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/model/usuario.\+hpp\end{DoxyCompactItemize}
