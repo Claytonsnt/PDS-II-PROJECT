@@ -232,8 +232,8 @@ namespace tpapp::ui {
                 std::cout << "> Deseja adquirir um item da sua lista, todos os itens ou sair? [1]UM ITEM [2]TODOS OS ITENS [3]SAIR " << std::endl;
                 std::cin >> opcao;
 
-                std::string nome_arquivo = "Transacoes - " + usuario_conect.usuario_login();
-                repository::Transacoes repositorio_transacoes(nome_arquivo);
+                std::string nome_arquivo_transacao = "Transacoes - " + usuario_conect.usuario_login();
+                repository::Transacoes repositorio_transacoes(nome_arquivo_transacao);
 
                 if(opcao == 1) {
                     std::cout << "> Digite o ID do jogo desejado: " << std::endl;
