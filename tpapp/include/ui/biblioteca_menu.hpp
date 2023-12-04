@@ -22,6 +22,10 @@ public:
 private:    
     model::Usuario const &_usuario;
     std::vector<service::Jogo> _jogos;
+    model::Usuario const &_usuario;
+
+private:    
+    std::vector<service::Jogo> _biblioteca;
     std::vector<service::Jogo> _favoritos;
     model::Usuario carregar_usuario_conectado();
 };
