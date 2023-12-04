@@ -9,10 +9,13 @@
 
 #include "repository/usuarios.hpp"
 #include "repository/desenvolvedores.hpp"
+#include "repository/jogos.hpp"
+#include "repository/bibliotecas.hpp"
 
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <algorithm>
 
 namespace tpapp::ui {
 Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
@@ -22,9 +25,10 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     _options.push_back("2 - Pesquisar Jogo");
     _options.push_back("3 - Adicionar Jogo aos Favoritos");
     _options.push_back("4 - Visualizar Favoritos");
-    _options.push_back("5 - [Loja]");
+    _options.push_back("5 - Adicionar saldo a carteira");
+    _options.push_back("6 - [Loja]");
     if(_usuario.desenvolvedor()){
-        _options.push_back("6 - [Menu de Desenvolvedor]");
+        _options.push_back("7 - [Menu de Desenvolvedor]");
     }
 
 }
@@ -35,7 +39,7 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
         arquivo.clear();
 
         if (arquivo.is_open()) {
-            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() <<'\n';
+            arquivo << usuario.usuario_id() << ' ' << usuario.usuario_login() << ' ' << usuario.senha() << ' ' << usuario.email() <<' '<< usuario.nome()<<' '<< usuario.idade() <<' '<< usuario.desenvolvedor() << ' ' << usuario.saldo() << std::endl;
             arquivo.close();
         } else {
             std::cerr << "> Erro ao salvar usuário conectado " << nome_arquivo << std::endl;
@@ -48,17 +52,17 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
     if(arquivo.is_open()) {
         int usuario_id;
-        unsigned idade;
+        unsigned idade, saldo;
         bool desenvolvedor;
-        std::string usuario_login, email, nome, sobrenome;
+        std::string usuario_login, email, nome, sobrenome, senha;
         
-        arquivo >> usuario_id >> usuario_login >> email >> nome >> sobrenome >> idade >> desenvolvedor;
+        arquivo >> usuario_id >> usuario_login >> senha >> email >> nome >> sobrenome >> idade >> desenvolvedor >> saldo;
         model::InfoPessoal info;
         info.primeiro_nome = nome;
         info.sobrenome = sobrenome;
         info.idade = idade;
 
-        model::Usuario usuario_conectado(usuario_id, usuario_login, email, info, desenvolvedor);
+        model::Usuario usuario_conectado(usuario_id, usuario_login, senha, email, info, desenvolvedor, saldo);
         arquivo.close();
         return usuario_conectado;
     } else {
@@ -68,13 +72,18 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
 
     Menu *Biblioteca::next(unsigned option) {
         model::Usuario usuario_conect = carregar_usuario_conectado();
+        std::string nome_arquivo = "Biblioteca - " + usuario_conect.usuario_login();
+        repository::Bibliotecas repositorio(nome_arquivo);
+        std::vector<service::Jogo> _biblioteca = repositorio.enviar_biblioteca();
         switch(option) {
             case 1: {
-                std::string nome_arquivo = "BIBLIOTECA - " + _usuario.usuario_login();
-                Biblioteca carregar_jogos_arquivo(std::string nome_arquivo);
                 std::cout << "Jogos na biblioteca: " << std::endl;
-                for(const service::Jogo& jogo : _jogos) {
-                std::cout << jogo.nome() << std::endl;
+                if (_biblioteca.empty()) {
+                    std::cout << "Sua biblioteca está vazia :(" << std::endl;
+                }else {
+                    for(const service::Jogo& jogo : _biblioteca) {
+                    std::cout << "|| " << jogo.jogo_id() << " || " << jogo.nome() << std::endl;
+                    }
                 }
                 return new Biblioteca(usuario_conect);
                 }
@@ -83,35 +92,51 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                 std::string nome_jogo;
                 std::cout << "> Digite o nome do jogo: " << std::endl;
                 std::cin >> nome_jogo;
-                if(_jogos.empty()) {
+
+                std::vector<service::Jogo> jogos_encontrados;
+                for (const auto& jogo : _biblioteca) {
+                    std::string nome_jogo_lower_case = jogo.nome();
+                    std::transform(nome_jogo_lower_case.begin(), nome_jogo_lower_case.end(), nome_jogo_lower_case.begin(), ::tolower);
+                    std::string pesquisa_lower_case = nome_jogo;
+                    std::transform(pesquisa_lower_case.begin(), pesquisa_lower_case.end(), pesquisa_lower_case.begin(), ::tolower);
+
+                    if (nome_jogo_lower_case.find(pesquisa_lower_case) != std::string::npos) {
+                        jogos_encontrados.push_back(jogo);
+                    }
+                }
+                int count = 0;
+                for(const auto& jogo_encontrado: jogos_encontrados) {
+                    count++;
+                }
+
+                if(_biblioteca.empty()) {
                     std::cout << "Sua biblioteca está vazia." << std::endl;
                     return new Biblioteca(usuario_conect);
-                }else {
-                for(service::Jogo& jogo : _jogos) {
-                    if(jogo.nome() == nome_jogo) {
-                        std::cout << "> " << nome_jogo << " - Está na sua biblioteca." << std::endl;
-                        return new Biblioteca(usuario_conect);
-                    }
-                    else{
-                        std::cout << ">" << nome_jogo << "- NÃO está na sua biblioteca." << std::endl;
-                        return new Biblioteca(usuario_conect);
-                    }
+                } 
+                else if(jogos_encontrados.empty()) {
+                    std::cout << "Nenhum jogo encontrado com o termo '" << nome_jogo << "'." << std::endl;
+                    break;
+                }              
+                else {
+                std::cout << "Jogos encontrados com o termo '" << nome_jogo << "':\n";
+                    for (const auto& jogo_encontrado: jogos_encontrados) {
+                        std::cout << "[" << jogo_encontrado.jogo_id() << "] " << "[" << jogo_encontrado.nome() << "]  || " << jogo_encontrado.genero() << " || " << std::endl;
                 }
                 }
-                }
+            }
             case 3: {
                 std::cout << "Jogos na biblioteca: " << std::endl;
-                if(_jogos.empty()){
+                if(_biblioteca.empty()){
                     std::cout << "Sua biblioteca está vazia." << std::endl;
                     return new Biblioteca(usuario_conect);
                 }else {
-                for(const service::Jogo& jogo : _jogos) {
+                for(const service::Jogo& jogo : _biblioteca) {
                 std::cout <<"ID: " <<jogo.jogo_id() << " - " << jogo.nome() << std::endl;
                 }
                 int id;
-                std::cout << "> Digite o do jogo que deseja adicionar aos Favoritos" << std::endl;
+                std::cout << "> Digite o ID do jogo que deseja adicionar aos Favoritos" << std::endl;
                 std:: cin >> id; 
-                for(const service::Jogo& jogo : _jogos) {
+                for(const service::Jogo& jogo : _biblioteca) {
                     if (jogo.jogo_id() == id) {
                         _favoritos.push_back(jogo);
                         std::cout << "O jogo " << jogo.nome() << " foi adicionado aos favoritos." << std::endl;
@@ -136,17 +161,28 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
                         return new Biblioteca(usuario_conect);
                     }
                 }
-                }
-                
-
+            }
             case 5: {
-                //repository::Usuarios repositorio_usuarios("repositorio_usuarios");
-                //model::Usuario usuario = repositorio_usuarios.obterUsuario(usuario_conect.email());
-                model::Usuario usuario_conect = carregar_usuario_conectado();
+                std::cout << "> Qual valor deseja adicionar a sua carteira? (Em R$) " << std::endl;
+                unsigned valor;
+                std::cin >> valor;
+                usuario_conect.alterar_saldo(valor);
+                repository::Usuarios rep_usuario("repositorio_usuarios");
+                repository::Desenvolvedores rep_dev("repositorio_desenvolvedores");
+                rep_usuario.alterar_usuario(usuario_conect);
+                rep_usuario.salvar_usuarios();
+                if(usuario_conect.desenvolvedor()){
+                    model::Desenvolvedor dev_conect = rep_dev.obter_desenvolvedor(usuario_conect.email());
+                    rep_dev.alterar_desenvolvedor(dev_conect);
+                    rep_dev.salvar_desenvolvedores();
+                }
+                return new Biblioteca(usuario_conect);
+            }
+            case 6: {
                 return new Loja(usuario_conect);
             }
 
-            case 6: {
+            case 7: {
                 repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
                 model::Desenvolvedor dev = repositorio_devs.obter_desenvolvedor(usuario_conect.email());
                 return new DevMenu(dev);
@@ -155,39 +191,5 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     return nullptr;
     }
 
-    void Biblioteca::salvar_jogos_arquivo(const std::string& nome_arquivo) const {
-        std::ofstream arquivo(nome_arquivo);
-
-        if (arquivo.is_open()) {
-            for (const auto& jogo : _jogos) {
-                arquivo << jogo.jogo_id() << ',' << jogo.nome() << ',' << jogo.desenvolvedora() << ',' << jogo.genero() << ',' << jogo.valor() << ',' << jogo.data_lancamento() << '\n';
-            }
-            arquivo.close();
-            std::cout << "> Dados dos jogos salvos em " << nome_arquivo << std::endl;
-        } else {
-            std::cerr << "> Erro ao abrir o arquivo " << nome_arquivo << std::endl;
-        }
-    }
-
-    void Biblioteca::carregar_jogos_arquivo(const std::string& nome_arquivo) {
-        std::ifstream arquivo(nome_arquivo);
-
-        if (arquivo.is_open()) {
-            _jogos.clear();
-
-            int jogo_id;
-            std::string nome, desenvolvedora_id, genero, data_lancamento;
-            double valor;
-
-            while (arquivo >> jogo_id >> nome >> desenvolvedora_id >> genero >> valor >> data_lancamento ) {
-                service::Jogo jogo(jogo_id, nome, desenvolvedora_id, genero, valor, data_lancamento);
-                _jogos.push_back(jogo);
-            }
-            arquivo.close();
-            std::cout << "> Dados dos jogos carregados de " << nome_arquivo << std::endl;
-        } else {
-            std:: cerr << "> ERRO para carregar os jogos de " << nome_arquivo << std::endl;
-        }
-    }
 }
 
