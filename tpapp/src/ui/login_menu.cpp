@@ -131,7 +131,8 @@ Menu *LoginMenu::next(unsigned option) {
             repository::Desenvolvedores repositorio_dev(arquivo_dev);
 
             std::string desenvolvedora_id;
-            std::cout << "> Desenvolvedora ID: ";
+            std::cout << "> Desenvolvedora ID: " << std::endl;
+            std::cout << "**Caso você seja o professor, utilizar o codigo #0000 (código para os desenvolvedores do app)**" << std::endl;
             std::cin >> desenvolvedora_id;
 
             if (repositorio_dev.verificar_desenvolvedora(desenvolvedora_id)) {
