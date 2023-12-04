@@ -74,37 +74,40 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;service/avaliacao.hpp&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;service/jogo.hpp&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>tpapp::repository {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classtpapp_1_1repository_1_1Avaliacoes.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html">Avaliacoes</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#a0f174b406556789f99fcbf67d5afef8e">Avaliacoes</a>(<span class="keyword">const</span> std::string&amp; nome_arquivo);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#a2ee9ba20cde647bd9b28204cc15aeba6">adicionar_avaliacao</a>(<span class="keyword">const</span> <a class="code" href="classtpapp_1_1service_1_1Avaliacao.html">service::Avaliacao</a>&amp; avaliacao);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classtpapp_1_1service_1_1Avaliacao.html">service::Avaliacao</a> <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#af8c9bf777702e89be9fc8c88d860e12e">obter_avaliacao</a>(<span class="keyword">const</span> <a class="code" href="classtpapp_1_1service_1_1Jogo.html">service::Jogo</a>&amp; jogo) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#ae8ae97ae48a809158f578f9f4f19d9b7">remover_avaliacao</a>(<span class="keywordtype">int</span> usuario_id, <span class="keywordtype">int</span> jogo_id);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#a667aa71462beefb8ad8d8acd54c83856">salvar_avaliacao</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;model/usuario.hpp&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;service/avaliacao.hpp&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;service/jogo.hpp&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span>tpapp::repository {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classtpapp_1_1repository_1_1Avaliacoes.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html">Avaliacoes</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#a0f174b406556789f99fcbf67d5afef8e">Avaliacoes</a>(<span class="keyword">const</span> std::string&amp; nome_arquivo);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#a2ee9ba20cde647bd9b28204cc15aeba6">adicionar_avaliacao</a>(<span class="keyword">const</span> <a class="code" href="classtpapp_1_1service_1_1Avaliacao.html">service::Avaliacao</a>&amp; avaliacao);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classtpapp_1_1service_1_1Avaliacao.html">service::Avaliacao</a> <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#af8c9bf777702e89be9fc8c88d860e12e">obter_avaliacao</a>(<span class="keyword">const</span> <a class="code" href="classtpapp_1_1service_1_1Jogo.html">service::Jogo</a>&amp; jogo) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::vector&lt;service::Avaliacao&gt; obter_avaliacoes(<span class="keyword">const</span> <a class="code" href="classtpapp_1_1service_1_1Jogo.html">service::Jogo</a>&amp; jogo) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#ae8ae97ae48a809158f578f9f4f19d9b7">remover_avaliacao</a>(<span class="keywordtype">int</span> usuario_id, <span class="keywordtype">int</span> jogo_id);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::string _arquivo_avaliacoes;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::vector&lt;service::Avaliacao&gt; _avaliacoes;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtpapp_1_1repository_1_1Avaliacoes.html#a667aa71462beefb8ad8d8acd54c83856">salvar_avaliacao</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::string _arquivo_avaliacoes;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::vector&lt;service::Avaliacao&gt; _avaliacoes;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclasstpapp_1_1repository_1_1Avaliacoes_html_af8c9bf777702e89be9fc8c88d860e12e"><div class="ttname"><a href="classtpapp_1_1repository_1_1Avaliacoes.html#af8c9bf777702e89be9fc8c88d860e12e">tpapp::repository::Avaliacoes::obter_avaliacao</a></div><div class="ttdeci">service::Avaliacao obter_avaliacao(const service::Jogo &amp;jogo) const</div><div class="ttdoc">busca uma avaliação no vector de avaliações</div></div>
 <div class="ttc" id="aclasstpapp_1_1repository_1_1Avaliacoes_html_a2ee9ba20cde647bd9b28204cc15aeba6"><div class="ttname"><a href="classtpapp_1_1repository_1_1Avaliacoes.html#a2ee9ba20cde647bd9b28204cc15aeba6">tpapp::repository::Avaliacoes::adicionar_avaliacao</a></div><div class="ttdeci">void adicionar_avaliacao(const service::Avaliacao &amp;avaliacao)</div><div class="ttdoc">adiciona uma avaliação ao repositório</div></div>
 <div class="ttc" id="aclasstpapp_1_1repository_1_1Avaliacoes_html_a0f174b406556789f99fcbf67d5afef8e"><div class="ttname"><a href="classtpapp_1_1repository_1_1Avaliacoes.html#a0f174b406556789f99fcbf67d5afef8e">tpapp::repository::Avaliacoes::Avaliacoes</a></div><div class="ttdeci">Avaliacoes(const std::string &amp;nome_arquivo)</div><div class="ttdoc">Inicializa um repositório de avaliações.</div></div>
-<div class="ttc" id="aclasstpapp_1_1repository_1_1Avaliacoes_html"><div class="ttname"><a href="classtpapp_1_1repository_1_1Avaliacoes.html">tpapp::repository::Avaliacoes</a></div><div class="ttdef"><b>Definition:</b> avaliacoes.hpp:17</div></div>
+<div class="ttc" id="aclasstpapp_1_1repository_1_1Avaliacoes_html"><div class="ttname"><a href="classtpapp_1_1repository_1_1Avaliacoes.html">tpapp::repository::Avaliacoes</a></div><div class="ttdef"><b>Definition:</b> avaliacoes.hpp:18</div></div>
 <div class="ttc" id="aclasstpapp_1_1service_1_1Jogo_html"><div class="ttname"><a href="classtpapp_1_1service_1_1Jogo.html">tpapp::service::Jogo</a></div><div class="ttdef"><b>Definition:</b> jogo.hpp:12</div></div>
 <div class="ttc" id="aclasstpapp_1_1service_1_1Avaliacao_html"><div class="ttname"><a href="classtpapp_1_1service_1_1Avaliacao.html">tpapp::service::Avaliacao</a></div><div class="ttdef"><b>Definition:</b> avaliacao.hpp:13</div></div>
-<div class="ttc" id="aclasstpapp_1_1repository_1_1Avaliacoes_html_ae8ae97ae48a809158f578f9f4f19d9b7"><div class="ttname"><a href="classtpapp_1_1repository_1_1Avaliacoes.html#ae8ae97ae48a809158f578f9f4f19d9b7">tpapp::repository::Avaliacoes::remover_avaliacao</a></div><div class="ttdeci">void remover_avaliacao(int usuario_id, int jogo_id)</div><div class="ttdoc">busca uma avaliação no vector de avaliações</div></div>
+<div class="ttc" id="aclasstpapp_1_1repository_1_1Avaliacoes_html_ae8ae97ae48a809158f578f9f4f19d9b7"><div class="ttname"><a href="classtpapp_1_1repository_1_1Avaliacoes.html#ae8ae97ae48a809158f578f9f4f19d9b7">tpapp::repository::Avaliacoes::remover_avaliacao</a></div><div class="ttdeci">void remover_avaliacao(int usuario_id, int jogo_id)</div><div class="ttdoc">busca uma avaliação no vector de avaliações para ser removido</div></div>
 <div class="ttc" id="aclasstpapp_1_1repository_1_1Avaliacoes_html_a667aa71462beefb8ad8d8acd54c83856"><div class="ttname"><a href="classtpapp_1_1repository_1_1Avaliacoes.html#a667aa71462beefb8ad8d8acd54c83856">tpapp::repository::Avaliacoes::salvar_avaliacao</a></div><div class="ttdeci">void salvar_avaliacao() const</div><div class="ttdoc">salva a avaliação no repositório</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
