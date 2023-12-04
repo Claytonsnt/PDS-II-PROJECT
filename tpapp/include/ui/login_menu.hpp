@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ui/menu.hpp"
-#include<string>
+#include <string>
 
 namespace tpapp::ui {
 class LoginMenu: public Menu {
