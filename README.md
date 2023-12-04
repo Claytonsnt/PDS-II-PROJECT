@@ -26,3 +26,4 @@ Foram identificados alguns pontos importantes para direcionar o desenvolvimento 
   - Avaliar jogos com nota e comentario
   - Ler e curtir a avaliação de outros usuários
 ## Instruções de Compilação
+O projeto possui um arquivo Makefile e para compilar é simple. Na pasta do projeto PDS-II-PROJECT/tpapp digitando o comando make, ele compila todo o projeto. Para execução, após compilar digite ./bin/tpapp e o projeto será executado.
