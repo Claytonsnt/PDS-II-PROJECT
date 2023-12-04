@@ -20,7 +20,7 @@ Foram identificados alguns pontos importantes para direcionar o desenvolvimento 
 - Compra de jogos:
   - Adicionar jogos ao carrinho de compras
   - Adicionar saldo à carteira
- - Biblioteca:
+- Biblioteca:
   - Criar uma pasta personalizada com os jogos favoritos
 - Avaliações:
   - Avaliar jogos com nota e comentario
