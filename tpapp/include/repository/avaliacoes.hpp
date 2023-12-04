@@ -3,7 +3,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 #include "model/usuario.hpp"
+
 #include "service/avaliacao.hpp"
 #include "service/jogo.hpp"
 
@@ -31,7 +33,7 @@ public:
     /// @brief busca uma avaliação no vector de avaliações
     ///
     /// @param jogo     O jogo para buscar as avaliações
-    service::Avaliacao obter_avaliacao(const service::Jogo& jogo) const;
+    service::Avaliacao obter_avaliacao(const service::Jogo& jogo, const model::Usuario& usuario) const;
 
     std::vector<service::Avaliacao> obter_avaliacoes(const service::Jogo& jogo) const;
 
@@ -41,11 +43,13 @@ public:
     /// @param jogo_id        O ID do jogo para remover a avaliação
     void remover_avaliacao(int usuario_id, int jogo_id);
 
-    /// @brief salva a avaliação no repositório
-    void salvar_avaliacao() const;
-
 private:
     std::string _arquivo_avaliacoes;
     std::vector<service::Avaliacao> _avaliacoes;
+
+    /// @brief salva a avaliação no repositório
+    void salvar_avaliacao() const;
+
+    void carregar_avaliacoes();
 };
 }

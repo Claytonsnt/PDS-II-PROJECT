@@ -10,6 +10,6 @@ var searchData=
   ['alterar_5fusuario_102',['alterar_usuario',['../classtpapp_1_1repository_1_1Usuarios.html#a557f41923cc308a449b7931f84283861',1,'tpapp::repository::Usuarios']]],
   ['atualizar_5fjogo_103',['atualizar_jogo',['../classtpapp_1_1repository_1_1Jogos.html#a7636d98a36287e181681f9e0748145af',1,'tpapp::repository::Jogos']]],
   ['avaliacao_104',['Avaliacao',['../classtpapp_1_1service_1_1Avaliacao.html#ab6ee17de152a68f34111eb5733d19a53',1,'tpapp::service::Avaliacao']]],
-  ['avaliacaomenu_105',['AvaliacaoMenu',['../classtpapp_1_1ui_1_1AvaliacaoMenu.html#acfc00807d440340d7a07086280f60887',1,'tpapp::ui::AvaliacaoMenu']]],
+  ['avaliacaomenu_105',['AvaliacaoMenu',['../classtpapp_1_1ui_1_1AvaliacaoMenu.html#a9e56423d262b8c5936b73d58208b3e2e',1,'tpapp::ui::AvaliacaoMenu']]],
   ['avaliacoes_106',['Avaliacoes',['../classtpapp_1_1repository_1_1Avaliacoes.html#a0f174b406556789f99fcbf67d5afef8e',1,'tpapp::repository::Avaliacoes']]]
 ];

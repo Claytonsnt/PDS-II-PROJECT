@@ -1,6 +1,7 @@
 #include "ui/biblioteca_menu.hpp"
 #include "ui/dev_menu.hpp"
 #include "ui/loja.hpp"
+#include "ui/avaliacao_menu.hpp"
 
 #include "service/jogo.hpp"
 
@@ -18,19 +19,20 @@
 #include <algorithm>
 
 namespace tpapp::ui {
-Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
-    salvar_usuario_conectado(_usuario);
-    _title = "Biblioteca";
-    _options.push_back("1 - Visualizar Jogos");
-    _options.push_back("2 - Pesquisar Jogo");
-    _options.push_back("3 - Adicionar Jogo aos Favoritos");
-    _options.push_back("4 - Visualizar Favoritos");
-    _options.push_back("5 - Adicionar saldo a carteira");
-    _options.push_back("6 - [Loja]");
-    if(_usuario.desenvolvedor()){
-        _options.push_back("7 - [Menu de Desenvolvedor]");
+    Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
+        salvar_usuario_conectado(_usuario);
+        _title = "Biblioteca";
+        _options.push_back("1 - Visualizar Jogos");
+        _options.push_back("2 - Pesquisar Jogo");
+        _options.push_back("3 - Adicionar Jogo aos Favoritos");
+        _options.push_back("4 - Visualizar Favoritos");
+        _options.push_back("5 - Adicionar saldo a carteira");
+        _options.push_back("6 - [Loja]");
+        _options.push_back("7 - [Menu Avaliação]");
+        if(_usuario.desenvolvedor()){
+            _options.push_back("8 - [Menu de Desenvolvedor]");
+        }
     }
-}
 
     void Biblioteca::salvar_usuario_conectado(const model::Usuario &usuario) const {
         std::string nome_arquivo = "usuario_conectado";
@@ -182,6 +184,10 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
             }
 
             case 7: {
+                return new AvaliacaoMenu(usuario_conect);
+            }
+            
+            case 8: {
                 repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
                 model::Desenvolvedor dev = repositorio_devs.obter_desenvolvedor(usuario_conect.email());
                 return new DevMenu(dev);
