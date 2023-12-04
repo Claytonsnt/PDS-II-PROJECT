@@ -14,8 +14,23 @@ void Avaliacoes::adicionar_avaliacao(const service::Avaliacao& avaliacao) {
     salvar_avaliacao();
 }
 
-service::Avaliacao Avaliacoes::obter_avaliacao(const service::Jogo& jogo) const {
+service::Avaliacao Avaliacoes::obter_avaliacao(const service::Jogo& jogo, const model::Usuario& usuario) const {
+    for (const auto& avaliacao : _avaliacoes) {
+        if (avaliacao.jogo_id() == jogo.jogo_id() && avaliacao.usuario_id() == usuario.usuario_id()) {
+            return avaliacao;
+        }else {
+            std::cout << "Esse jogo ainda nao foi avaliado por voce" << std::endl;
+        }
+    }
+}
 
+std::vector<service::Avaliacao> obter_avaliacoes(const service::Jogo& jogo) {
+    for (const auto& avaliacao : _avaliacoes) {
+        if (avaliacao.jogo_id() == jogo.jogo_id()) {
+            _avaliacoes.push_back(avaliacao);
+        }
+    }
+    return _avaliacoes;
 }
 
 void Avaliacoes::remover_avaliacao(int jogo_id, int usuario_id) {
