@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "model/usuario.hpp"
 #include "service/avaliacao.hpp"
 #include "service/jogo.hpp"
 
@@ -32,7 +33,9 @@ public:
     /// @param jogo     O jogo para buscar as avaliações
     service::Avaliacao obter_avaliacao(const service::Jogo& jogo) const;
 
-    /// @brief busca uma avaliação no vector de avaliações
+    std::vector<service::Avaliacao> obter_avaliacoes(const service::Jogo& jogo) const;
+
+    /// @brief busca uma avaliação no vector de avaliações para ser removido
     ///
     /// @param usuario_id     O ID do usuario para remover a avaliação
     /// @param jogo_id        O ID do jogo para remover a avaliação
