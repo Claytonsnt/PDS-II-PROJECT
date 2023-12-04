@@ -86,21 +86,25 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classtpapp_1_1ui_1_1Biblioteca.html#a561136edfa7e5d3dec71bcfce395b990">Biblioteca</a>(<a class="code" href="classtpapp_1_1model_1_1Usuario.html">model::Usuario</a> <span class="keyword">const</span> &amp;usuario);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classtpapp_1_1ui_1_1Menu.html">Menu</a> *next(<span class="keywordtype">unsigned</span> option) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classtpapp_1_1model_1_1Usuario.html">model::Usuario</a> <span class="keyword">const</span> &amp;_usuario;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">private</span>:    </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::vector&lt;service::Jogo&gt; _biblioteca;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::vector&lt;service::Jogo&gt; _favoritos;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> salvar_usuario_conectado(<span class="keyword">const</span> <a class="code" href="classtpapp_1_1model_1_1Usuario.html">model::Usuario</a>&amp; usuario) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classtpapp_1_1model_1_1Usuario.html">model::Usuario</a> carregar_usuario_conectado();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtpapp_1_1ui_1_1Biblioteca.html#a52b13c1cc7c4ddb1237c45a348b8429a">salvar_usuario_conectado</a>(<span class="keyword">const</span> <a class="code" href="classtpapp_1_1model_1_1Usuario.html">model::Usuario</a>&amp; usuario) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">private</span>:   </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classtpapp_1_1model_1_1Usuario.html">model::Usuario</a> <span class="keyword">const</span> &amp;_usuario;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    std::vector&lt;service::Jogo&gt; _jogos;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::vector&lt;service::Jogo&gt; _biblioteca;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::vector&lt;service::Jogo&gt; _favoritos;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classtpapp_1_1model_1_1Usuario.html">model::Usuario</a> carregar_usuario_conectado();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclasstpapp_1_1ui_1_1Biblioteca_html"><div class="ttname"><a href="classtpapp_1_1ui_1_1Biblioteca.html">tpapp::ui::Biblioteca</a></div><div class="ttdef"><b>Definition:</b> biblioteca_menu.hpp:18</div></div>
 <div class="ttc" id="aclasstpapp_1_1model_1_1Usuario_html"><div class="ttname"><a href="classtpapp_1_1model_1_1Usuario.html">tpapp::model::Usuario</a></div><div class="ttdef"><b>Definition:</b> usuario.hpp:17</div></div>
 <div class="ttc" id="aclasstpapp_1_1ui_1_1Menu_html"><div class="ttname"><a href="classtpapp_1_1ui_1_1Menu.html">tpapp::ui::Menu</a></div><div class="ttdef"><b>Definition:</b> menu.hpp:13</div></div>
 <div class="ttc" id="aclasstpapp_1_1ui_1_1Biblioteca_html_a561136edfa7e5d3dec71bcfce395b990"><div class="ttname"><a href="classtpapp_1_1ui_1_1Biblioteca.html#a561136edfa7e5d3dec71bcfce395b990">tpapp::ui::Biblioteca::Biblioteca</a></div><div class="ttdeci">Biblioteca(model::Usuario const &amp;usuario)</div><div class="ttdoc">Inicializa o menu de biblioteca.</div></div>
+<div class="ttc" id="aclasstpapp_1_1ui_1_1Biblioteca_html_a52b13c1cc7c4ddb1237c45a348b8429a"><div class="ttname"><a href="classtpapp_1_1ui_1_1Biblioteca.html#a52b13c1cc7c4ddb1237c45a348b8429a">tpapp::ui::Biblioteca::salvar_usuario_conectado</a></div><div class="ttdeci">void salvar_usuario_conectado(const model::Usuario &amp;usuario) const</div><div class="ttdoc">salva os dados do usuário conectado</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

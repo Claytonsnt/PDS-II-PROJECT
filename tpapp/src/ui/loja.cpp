@@ -1,6 +1,7 @@
 #include "ui/loja.hpp"
 #include "ui/biblioteca_menu.hpp"
 #include "ui/dev_menu.hpp"
+#include "ui/avaliacao_menu.hpp"
 
 #include "service/jogo.hpp"
 #include "service/transacao.hpp"
@@ -13,6 +14,7 @@
 #include "repository/jogos.hpp"
 #include "repository/transacoes.hpp"
 #include "repository/lojas.hpp"
+
 
 #include <iostream>
 #include <string>
@@ -30,10 +32,11 @@ namespace tpapp::ui {
     _options.push_back("2 - buscar jogos");
     _options.push_back("3 - Visualizar lista de desejos");
     _options.push_back("4 - [Biblioteca]");
+    _options.push_back("5 - [Menu Avaliação]");
     if(_usuario.desenvolvedor()){
-        _options.push_back("5 - [Menu de Desenvolvedor]");
+        _options.push_back("6 - [Menu de Desenvolvedor]");
     }
-}
+    }
 
     void Loja::salvar_usuario_conectado(const model::Usuario &usuario) const {
         std::string nome_arquivo = "usuario_conectado";
@@ -269,6 +272,10 @@ namespace tpapp::ui {
             }
             
             case 5: {
+                return new AvaliacaoMenu(usuario_conect);
+            }
+
+            case 6: {
                 repository::Desenvolvedores repositorio_devs("repositorio_desenvolvedores");
                 model::Desenvolvedor dev = repositorio_devs.obter_desenvolvedor(usuario_conect.email());
                 return new DevMenu(dev);

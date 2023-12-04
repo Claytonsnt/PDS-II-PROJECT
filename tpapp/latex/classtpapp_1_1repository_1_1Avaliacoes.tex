@@ -7,13 +7,13 @@
 \begin{DoxyCompactList}\small\item\em Inicializa um repositório de avaliações. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtpapp_1_1repository_1_1Avaliacoes_a2ee9ba20cde647bd9b28204cc15aeba6}{adicionar\+\_\+avaliacao}} (const \mbox{\hyperlink{classtpapp_1_1service_1_1Avaliacao}{service\+::\+Avaliacao}} \&avaliacao)
 \begin{DoxyCompactList}\small\item\em adiciona uma avaliação ao repositório \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtpapp_1_1service_1_1Avaliacao}{service\+::\+Avaliacao}} \mbox{\hyperlink{classtpapp_1_1repository_1_1Avaliacoes_af8c9bf777702e89be9fc8c88d860e12e}{obter\+\_\+avaliacao}} (const \mbox{\hyperlink{classtpapp_1_1service_1_1Jogo}{service\+::\+Jogo}} \&jogo) const
+\mbox{\hyperlink{classtpapp_1_1service_1_1Avaliacao}{service\+::\+Avaliacao}} \mbox{\hyperlink{classtpapp_1_1repository_1_1Avaliacoes_aaae0aeb6307e8f49014dd8a3079eeabb}{obter\+\_\+avaliacao}} (const \mbox{\hyperlink{classtpapp_1_1service_1_1Jogo}{service\+::\+Jogo}} \&jogo, const \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario}{model\+::\+Usuario}} \&usuario) const
 \begin{DoxyCompactList}\small\item\em busca uma avaliação no vector de avaliações \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Avaliacoes_ae56a92b55d3e298dd9cccfc7b0338a16}\label{classtpapp_1_1repository_1_1Avaliacoes_ae56a92b55d3e298dd9cccfc7b0338a16}} 
+std\+::vector$<$ \mbox{\hyperlink{classtpapp_1_1service_1_1Avaliacao}{service\+::\+Avaliacao}} $>$ {\bfseries obter\+\_\+avaliacoes} (const \mbox{\hyperlink{classtpapp_1_1service_1_1Jogo}{service\+::\+Jogo}} \&jogo) const
+\item 
 void \mbox{\hyperlink{classtpapp_1_1repository_1_1Avaliacoes_ae8ae97ae48a809158f578f9f4f19d9b7}{remover\+\_\+avaliacao}} (int usuario\+\_\+id, int jogo\+\_\+id)
-\begin{DoxyCompactList}\small\item\em busca uma avaliação no vector de avaliações \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classtpapp_1_1repository_1_1Avaliacoes_a667aa71462beefb8ad8d8acd54c83856}\label{classtpapp_1_1repository_1_1Avaliacoes_a667aa71462beefb8ad8d8acd54c83856}} 
-void \mbox{\hyperlink{classtpapp_1_1repository_1_1Avaliacoes_a667aa71462beefb8ad8d8acd54c83856}{salvar\+\_\+avaliacao}} () const
-\begin{DoxyCompactList}\small\item\em salva a avaliação no repositório \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em busca uma avaliação no vector de avaliações para ser removido \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -50,11 +50,11 @@ adiciona uma avaliação ao repositório
 {\em avaliacao} & \mbox{\hyperlink{classAvalia_xC3_xA7_xC3_xA3o}{Avaliação}} a ser adicionada \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classtpapp_1_1repository_1_1Avaliacoes_af8c9bf777702e89be9fc8c88d860e12e}\label{classtpapp_1_1repository_1_1Avaliacoes_af8c9bf777702e89be9fc8c88d860e12e}} 
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Avaliacoes_aaae0aeb6307e8f49014dd8a3079eeabb}\label{classtpapp_1_1repository_1_1Avaliacoes_aaae0aeb6307e8f49014dd8a3079eeabb}} 
 \index{tpapp::repository::Avaliacoes@{tpapp::repository::Avaliacoes}!obter\_avaliacao@{obter\_avaliacao}}
 \index{obter\_avaliacao@{obter\_avaliacao}!tpapp::repository::Avaliacoes@{tpapp::repository::Avaliacoes}}
 \doxysubsubsection{\texorpdfstring{obter\_avaliacao()}{obter\_avaliacao()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtpapp_1_1service_1_1Avaliacao}{service\+::\+Avaliacao}} tpapp\+::repository\+::\+Avaliacoes\+::obter\+\_\+avaliacao (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtpapp_1_1service_1_1Jogo}{service\+::\+Jogo}} \&}]{jogo }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtpapp_1_1service_1_1Avaliacao}{service\+::\+Avaliacao}} tpapp\+::repository\+::\+Avaliacoes\+::obter\+\_\+avaliacao (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtpapp_1_1service_1_1Jogo}{service\+::\+Jogo}} \&}]{jogo,  }\item[{const \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario}{model\+::\+Usuario}} \&}]{usuario }\end{DoxyParamCaption}) const}
 
 
 
@@ -73,7 +73,7 @@ busca uma avaliação no vector de avaliações
 
 
 
-busca uma avaliação no vector de avaliações 
+busca uma avaliação no vector de avaliações para ser removido 
 
 
 \begin{DoxyParams}{Parameters}
