@@ -30,7 +30,6 @@ Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {
     if(_usuario.desenvolvedor()){
         _options.push_back("7 - [Menu de Desenvolvedor]");
     }
-
 }
 
     void Biblioteca::salvar_usuario_conectado(const model::Usuario &usuario) const {
