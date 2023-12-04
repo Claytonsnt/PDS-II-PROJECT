@@ -3,7 +3,7 @@
 #include <string>
 
 namespace tpapp::service {
-Carteira::Carteira(double saldo): _saldo(saldo) {}
+Carteira::Carteira(double saldo = 0): _saldo(saldo) {}
 
 void Carteira::alterar_saldo(double valor) {
     if ((_saldo + valor) < 0) {
