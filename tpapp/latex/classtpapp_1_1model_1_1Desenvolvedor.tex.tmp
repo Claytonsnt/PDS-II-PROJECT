@@ -1,0 +1,75 @@
+\hypertarget{classtpapp_1_1model_1_1Desenvolvedor}{}\doxysection{tpapp\+::model\+::Desenvolvedor Class Reference}
+\label{classtpapp_1_1model_1_1Desenvolvedor}\index{tpapp::model::Desenvolvedor@{tpapp::model::Desenvolvedor}}
+
+
+Inheritance diagram for tpapp\+::model\+::Desenvolvedor\+:
+% FIG 0
+
+
+Collaboration diagram for tpapp\+::model\+::Desenvolvedor\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtpapp_1_1model_1_1Desenvolvedor_a84a54ad0a1d24199569b14135ed23e75}{Desenvolvedor}} (int \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a83c54fef161c64535796b56412352849}{usuario\+\_\+id}}, std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_af8962614f210fa42e6950bb0b8f82eb4}{usuario\+\_\+login}}, std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a1b6bde50b218864407fb32307502447b}{senha}}, std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Desenvolvedor_ac03feb09112287f0908f80109e66d1e1}{desenvolvedora\+\_\+id}}, std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a02741c1392b62f15cf09f6799b58d974}{email}}, \mbox{\hyperlink{structtpapp_1_1model_1_1InfoPessoal}{Info\+Pessoal}} \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_a95150d5f310155eb1599b9e8873926dd}{info}}, unsigned \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario_af2337bf2123e52db889e16b69e36772c}{saldo}})
+\begin{DoxyCompactList}\small\item\em Inicializa um desenvolvedor. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Desenvolvedor_ac03feb09112287f0908f80109e66d1e1}{desenvolvedora\+\_\+id}} () const
+\item 
+std\+::string \mbox{\hyperlink{classtpapp_1_1model_1_1Desenvolvedor_a1699da73135d833b533eb36fd2cd1993}{to\+\_\+string}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Desenvolvedor_a84a54ad0a1d24199569b14135ed23e75}\label{classtpapp_1_1model_1_1Desenvolvedor_a84a54ad0a1d24199569b14135ed23e75}} 
+\index{tpapp::model::Desenvolvedor@{tpapp::model::Desenvolvedor}!Desenvolvedor@{Desenvolvedor}}
+\index{Desenvolvedor@{Desenvolvedor}!tpapp::model::Desenvolvedor@{tpapp::model::Desenvolvedor}}
+\doxysubsubsection{\texorpdfstring{Desenvolvedor()}{Desenvolvedor()}}
+{\footnotesize\ttfamily tpapp\+::model\+::\+Desenvolvedor\+::\+Desenvolvedor (\begin{DoxyParamCaption}\item[{int}]{usuario\+\_\+id,  }\item[{std\+::string}]{usuario\+\_\+login,  }\item[{std\+::string}]{senha,  }\item[{std\+::string}]{desenvolvedora\+\_\+id,  }\item[{std\+::string}]{email,  }\item[{\mbox{\hyperlink{structtpapp_1_1model_1_1InfoPessoal}{Info\+Pessoal}}}]{info,  }\item[{unsigned}]{saldo }\end{DoxyParamCaption})}
+
+
+
+Inicializa um desenvolvedor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em usuario\+\_\+id} & ID do usuário \\
+\hline
+{\em usuario\+\_\+login} & Login do usuário \\
+\hline
+{\em senha} & Senha do usuário \\
+\hline
+{\em desenvolvedora\+\_\+id} & ID da desenvolvedora \\
+\hline
+{\em email} & Email do usuário \\
+\hline
+{\em info} & Informações pessoais do usuário \\
+\hline
+{\em saldo} & Saldo da carteira do usuário \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Desenvolvedor_ac03feb09112287f0908f80109e66d1e1}\label{classtpapp_1_1model_1_1Desenvolvedor_ac03feb09112287f0908f80109e66d1e1}} 
+\index{tpapp::model::Desenvolvedor@{tpapp::model::Desenvolvedor}!desenvolvedora\_id@{desenvolvedora\_id}}
+\index{desenvolvedora\_id@{desenvolvedora\_id}!tpapp::model::Desenvolvedor@{tpapp::model::Desenvolvedor}}
+\doxysubsubsection{\texorpdfstring{desenvolvedora\_id()}{desenvolvedora\_id()}}
+{\footnotesize\ttfamily std\+::string tpapp\+::model\+::\+Desenvolvedor\+::desenvolvedora\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+ID da desenvolvedora 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1model_1_1Desenvolvedor_a1699da73135d833b533eb36fd2cd1993}\label{classtpapp_1_1model_1_1Desenvolvedor_a1699da73135d833b533eb36fd2cd1993}} 
+\index{tpapp::model::Desenvolvedor@{tpapp::model::Desenvolvedor}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!tpapp::model::Desenvolvedor@{tpapp::model::Desenvolvedor}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string tpapp\+::model\+::\+Desenvolvedor\+::to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+uma string com as informações importantes do usuário 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/model/desenvolvedor.\+hpp\end{DoxyCompactItemize}

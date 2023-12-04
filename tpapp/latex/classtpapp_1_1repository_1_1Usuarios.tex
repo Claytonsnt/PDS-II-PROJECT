@@ -1,0 +1,162 @@
+\hypertarget{classtpapp_1_1repository_1_1Usuarios}{}\doxysection{tpapp\+::repository\+::Usuarios Class Reference}
+\label{classtpapp_1_1repository_1_1Usuarios}\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_ae1b26cbb6c457380456efe779619f735}{Usuarios}} (const std\+::string \&nome\+\_\+arquivo)
+\begin{DoxyCompactList}\small\item\em Inicializa um repositório de usuários. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_a930f617ca99e0f8c994ceb8d50264880}{verificar\+\_\+usuario\+\_\+email}} (const std\+::string \&email) const
+\begin{DoxyCompactList}\small\item\em Verifica se o usuário existe. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_a00e377d8f768c7bd47998f617ed8fc62}{verificar\+\_\+usuario\+\_\+senha}} (const std\+::string \&senha) const
+\begin{DoxyCompactList}\small\item\em Verifica a senha inserida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_a2d8b96fd2c3c69023cc21376717aee7d}{adicionar\+\_\+usuario}} (const \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario}{model\+::\+Usuario}} \&usuario)
+\begin{DoxyCompactList}\small\item\em adiciona um usuario ao repositório \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtpapp_1_1model_1_1Usuario}{model\+::\+Usuario}} \mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_aaf0ad289d89f7a2903abc2ef5020c113}{obter\+\_\+usuario}} (const std\+::string \&email) const
+\begin{DoxyCompactList}\small\item\em obtem um usuario a partir da lista do repositório \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_ae7dd51c492974ad33b3036f50781d43e}{qnt\+\_\+usuarios}} ()
+\item 
+void \mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_a276ec1912cbb0f73eb5bb2116a3a4c52}{salvar\+\_\+usuarios}} () const
+\begin{DoxyCompactList}\small\item\em Salva os usuários no repositório. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_a557f41923cc308a449b7931f84283861}{alterar\+\_\+usuario}} (const \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario}{model\+::\+Usuario}} \&usuario)
+\begin{DoxyCompactList}\small\item\em altera um usuário do repositório \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classtpapp_1_1repository_1_1Usuarios_a043d5f8ea175ca8fba4037bf04bde289}{criptografar\+\_\+senha}} (std\+::string \&senha)
+\begin{DoxyCompactList}\small\item\em criptografa a senha \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_ae1b26cbb6c457380456efe779619f735}\label{classtpapp_1_1repository_1_1Usuarios_ae1b26cbb6c457380456efe779619f735}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!Usuarios@{Usuarios}}
+\index{Usuarios@{Usuarios}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{Usuarios()}{Usuarios()}}
+{\footnotesize\ttfamily tpapp\+::repository\+::\+Usuarios\+::\+Usuarios (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nome\+\_\+arquivo }\end{DoxyParamCaption})}
+
+
+
+Inicializa um repositório de usuários. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+arquivo} & O nome do repositório \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_a2d8b96fd2c3c69023cc21376717aee7d}\label{classtpapp_1_1repository_1_1Usuarios_a2d8b96fd2c3c69023cc21376717aee7d}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!adicionar\_usuario@{adicionar\_usuario}}
+\index{adicionar\_usuario@{adicionar\_usuario}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{adicionar\_usuario()}{adicionar\_usuario()}}
+{\footnotesize\ttfamily void tpapp\+::repository\+::\+Usuarios\+::adicionar\+\_\+usuario (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario}{model\+::\+Usuario}} \&}]{usuario }\end{DoxyParamCaption})}
+
+
+
+adiciona um usuario ao repositório 
+
+
+\begin{DoxyParams}{Parameters}
+{\em usuario} & usuario a ser adicionado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_a557f41923cc308a449b7931f84283861}\label{classtpapp_1_1repository_1_1Usuarios_a557f41923cc308a449b7931f84283861}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!alterar\_usuario@{alterar\_usuario}}
+\index{alterar\_usuario@{alterar\_usuario}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{alterar\_usuario()}{alterar\_usuario()}}
+{\footnotesize\ttfamily void tpapp\+::repository\+::\+Usuarios\+::alterar\+\_\+usuario (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario}{model\+::\+Usuario}} \&}]{usuario }\end{DoxyParamCaption})}
+
+
+
+altera um usuário do repositório 
+
+
+\begin{DoxyParams}{Parameters}
+{\em usuario} & usuário a ser alterado ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_a043d5f8ea175ca8fba4037bf04bde289}\label{classtpapp_1_1repository_1_1Usuarios_a043d5f8ea175ca8fba4037bf04bde289}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!criptografar\_senha@{criptografar\_senha}}
+\index{criptografar\_senha@{criptografar\_senha}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{criptografar\_senha()}{criptografar\_senha()}}
+{\footnotesize\ttfamily std\+::string tpapp\+::repository\+::\+Usuarios\+::criptografar\+\_\+senha (\begin{DoxyParamCaption}\item[{std\+::string \&}]{senha }\end{DoxyParamCaption})}
+
+
+
+criptografa a senha 
+
+
+\begin{DoxyParams}{Parameters}
+{\em senha} & senha a ser criptografada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna a senha criptografada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_aaf0ad289d89f7a2903abc2ef5020c113}\label{classtpapp_1_1repository_1_1Usuarios_aaf0ad289d89f7a2903abc2ef5020c113}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!obter\_usuario@{obter\_usuario}}
+\index{obter\_usuario@{obter\_usuario}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{obter\_usuario()}{obter\_usuario()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtpapp_1_1model_1_1Usuario}{model\+::\+Usuario}} tpapp\+::repository\+::\+Usuarios\+::obter\+\_\+usuario (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{email }\end{DoxyParamCaption}) const}
+
+
+
+obtem um usuario a partir da lista do repositório 
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & email para busca no vector de usuario \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_ae7dd51c492974ad33b3036f50781d43e}\label{classtpapp_1_1repository_1_1Usuarios_ae7dd51c492974ad33b3036f50781d43e}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!qnt\_usuarios@{qnt\_usuarios}}
+\index{qnt\_usuarios@{qnt\_usuarios}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{qnt\_usuarios()}{qnt\_usuarios()}}
+{\footnotesize\ttfamily int tpapp\+::repository\+::\+Usuarios\+::qnt\+\_\+usuarios (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+retorna a quantidade de usuários no repositório 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_a276ec1912cbb0f73eb5bb2116a3a4c52}\label{classtpapp_1_1repository_1_1Usuarios_a276ec1912cbb0f73eb5bb2116a3a4c52}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!salvar\_usuarios@{salvar\_usuarios}}
+\index{salvar\_usuarios@{salvar\_usuarios}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{salvar\_usuarios()}{salvar\_usuarios()}}
+{\footnotesize\ttfamily void tpapp\+::repository\+::\+Usuarios\+::salvar\+\_\+usuarios (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Salva os usuários no repositório. 
+
+Salva os usuários no arquivo \mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_a930f617ca99e0f8c994ceb8d50264880}\label{classtpapp_1_1repository_1_1Usuarios_a930f617ca99e0f8c994ceb8d50264880}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!verificar\_usuario\_email@{verificar\_usuario\_email}}
+\index{verificar\_usuario\_email@{verificar\_usuario\_email}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{verificar\_usuario\_email()}{verificar\_usuario\_email()}}
+{\footnotesize\ttfamily bool tpapp\+::repository\+::\+Usuarios\+::verificar\+\_\+usuario\+\_\+email (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{email }\end{DoxyParamCaption}) const}
+
+
+
+Verifica se o usuário existe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & email do usuário a ser verificado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classtpapp_1_1repository_1_1Usuarios_a00e377d8f768c7bd47998f617ed8fc62}\label{classtpapp_1_1repository_1_1Usuarios_a00e377d8f768c7bd47998f617ed8fc62}} 
+\index{tpapp::repository::Usuarios@{tpapp::repository::Usuarios}!verificar\_usuario\_senha@{verificar\_usuario\_senha}}
+\index{verificar\_usuario\_senha@{verificar\_usuario\_senha}!tpapp::repository::Usuarios@{tpapp::repository::Usuarios}}
+\doxysubsubsection{\texorpdfstring{verificar\_usuario\_senha()}{verificar\_usuario\_senha()}}
+{\footnotesize\ttfamily bool tpapp\+::repository\+::\+Usuarios\+::verificar\+\_\+usuario\+\_\+senha (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{senha }\end{DoxyParamCaption}) const}
+
+
+
+Verifica a senha inserida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em senha} & senha do usuário a ser verificada \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/repository/usuarios.\+hpp\end{DoxyCompactItemize}

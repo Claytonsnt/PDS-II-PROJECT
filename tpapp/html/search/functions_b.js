@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['obter_5favaliacao_139',['obter_avaliacao',['../classtpapp_1_1repository_1_1Avaliacoes.html#af8c9bf777702e89be9fc8c88d860e12e',1,'tpapp::repository::Avaliacoes']]],
+  ['obter_5fdata_140',['obter_data',['../classtpapp_1_1repository_1_1Transacoes.html#af417928394286af8af5d9c1cc909e96e',1,'tpapp::repository::Transacoes']]],
+  ['obter_5fdesenvolvedor_141',['obter_desenvolvedor',['../classtpapp_1_1repository_1_1Desenvolvedores.html#a2012368cd0973fb11c56bf0f337e2da0',1,'tpapp::repository::Desenvolvedores']]],
+  ['obter_5fjogo_142',['obter_jogo',['../classtpapp_1_1repository_1_1Jogos.html#a83df13fabe079502e13889d4bb6eba44',1,'tpapp::repository::Jogos']]],
+  ['obter_5fusuario_143',['obter_usuario',['../classtpapp_1_1repository_1_1Usuarios.html#aaf0ad289d89f7a2903abc2ef5020c113',1,'tpapp::repository::Usuarios']]]
+];
