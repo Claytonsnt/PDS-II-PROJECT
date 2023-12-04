@@ -16,8 +16,8 @@ void Carteira::alterar_saldo(double valor) {
     return;
 }
 
-double saldo() {
-    return 0;
+double Carteira::saldo() {
+    return _saldo;
 }
 
 void Carteira::adicionar_transacao(service::Transacao t) {

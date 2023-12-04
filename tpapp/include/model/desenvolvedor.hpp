@@ -9,7 +9,6 @@
  *
  * Contém as informações necessárias de um usuário e desenvolvedor.
  */
-
 namespace tpapp::model {
 class Desenvolvedor : public Usuario {
 public:
