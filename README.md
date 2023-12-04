@@ -25,4 +25,4 @@ Foram identificados alguns pontos importantes para direcionar o desenvolvimento 
 - Avaliações:
   - Avaliar jogos com nota e comentario
   - Ler e curtir a avaliação de outros usuários
-##Instruções de Compilação
+## Instruções de Compilação
