@@ -18,6 +18,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <chrono>
 
 namespace tpapp::repository {
 
@@ -51,19 +52,42 @@ void Transacoes::comprar(const service::Jogo& jogo, const model::Usuario& usuari
             std::string nome_arquivo = "Biblioteca - " + usuario.usuario_login();
             repository::Bibliotecas repositorio(nome_arquivo);
             if(repositorio.adicionar_jogo(jogo)) {
-                service::Transacao transacao("compra", jogo.valor(), "carteira", jogo.data_lancamento()); //implementar data na transacao
+                std::string tipo = "Compra";
+                std::string forma_pagamento = "carteira";
+                std::string data = obter_data();
+                service::Transacao transacao(tipo, jogo.valor(), forma_pagamento, data);
                 Transacoes::adicionar_transacao(transacao);
                 std::cout << "> Seu jogo já está disponível na sua biblioteca." << std::endl;
                 return;
             } else {
                 return;
             }
-            
         }
     } else {
         std::cout << ">Voltando a loja..." << std::endl;
         return;
     }
+}
+
+void Transacoes::exibir_transacoes() {
+    std::cout << "====================================" << std::endl;
+    for (const auto& transacao:_transacoes) {
+        std::cout << "[" << transacao.data() << "] " << "- " << transacao.tipo()  << " || " << transacao.valor() << " || " << std::endl;
+    };
+    std::cout << "====================================" << std::endl;
+}
+
+std::string Transacoes::obter_data() {
+    auto data_atual = std::chrono::system_clock::now();
+    std::time_t tempo_atual = std::chrono::system_clock::to_time_t(data_atual);
+    std::tm data = *std::localtime(&tempo_atual);
+
+    int dia = data.tm_mday;
+    int mes = data.tm_mon + 1;
+    int ano = data.tm_year + 1900;
+
+    std::string data_formatada = std::to_string(dia) + "/" + std::to_string(mes) + "/" + std::to_string(ano);
+    return data_formatada;
 }
 
 void Transacoes::carregar_transacoes() {
