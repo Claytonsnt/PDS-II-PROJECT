@@ -4,7 +4,11 @@
 #include <vector>
 #include <string>
 
-
+/**
+ * @class Menu
+ * @brief Contém as informações gerais para a exibição de um menu.
+ *
+ */
 namespace tpapp::ui {
 class Menu {
 public:

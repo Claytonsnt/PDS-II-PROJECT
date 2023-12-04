@@ -3,7 +3,8 @@ build/src/ui/loja.o: src/ui/loja.cpp include/ui/loja.hpp \
  include/ui/biblioteca_menu.hpp include/ui/dev_menu.hpp \
  include/model/desenvolvedor.hpp include/service/transacao.hpp \
  include/repository/usuarios.hpp include/repository/desenvolvedores.hpp \
- include/repository/jogos.hpp include/repository/transacoes.hpp
+ include/repository/jogos.hpp include/repository/transacoes.hpp \
+ include/repository/lojas.hpp
 
 include/ui/loja.hpp:
 
@@ -28,3 +29,5 @@ include/repository/desenvolvedores.hpp:
 include/repository/jogos.hpp:
 
 include/repository/transacoes.hpp:
+
+include/repository/lojas.hpp:

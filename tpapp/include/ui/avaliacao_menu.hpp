@@ -9,9 +9,20 @@
 #include <string>
 #include <vector>
 
+/**
+ * @class AvaliacaoMenu
+ * @brief É uma subclasse do Menu.
+ *
+ * Contém as informações necessárias para a exibição de um menu de avaliação.
+ */
 namespace tpapp::ui {
 class AvaliacaoMenu : public Menu {
 public:
+
+    /// @brief Inicializa o menu de avaliação
+    ///
+    /// @param usuario      O usuário conectado
+    /// @param jogo         O jogo a ser avaliado
     AvaliacaoMenu(model::Usuario const &usuario, service::Jogo const &jogo);
     Menu *next(unsigned option) override;
 

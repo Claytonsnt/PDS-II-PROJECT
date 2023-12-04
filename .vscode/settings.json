@@ -102,7 +102,16 @@
     "chrono": "cpp",
     "ctime": "cpp",
     "ratio": "cpp",
-    "map": "cpp"
+    "bit": "cpp",
+    "map": "cpp",
+    "optional": "cpp",
+    "string_view": "cpp",
+    "iomanip": "cpp",
+    "bitset": "cpp",
+    "condition_variable": "cpp",
+    "cstring": "cpp",
+    "regex": "cpp",
+    "shared_mutex": "cpp"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }

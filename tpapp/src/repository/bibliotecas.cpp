@@ -38,7 +38,7 @@ namespace tpapp::repository {
             _biblioteca.push_back(jogo);
         }
     } else {
-        std::cerr << "Erro ao abrir o arquivo de Biblioteca." << std::endl;
+        return;
     }
     return;
     }
