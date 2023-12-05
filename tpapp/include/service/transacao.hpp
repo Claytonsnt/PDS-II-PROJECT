@@ -1,10 +1,12 @@
 #pragma once
 
+#include "service/jogo.hpp"
+
+#include "ui/loja.hpp"
+
 #include <iostream>
 #include <string>
 #include <vector>
-#include "ui/loja.hpp"
-#include "service/jogo.hpp"
 
 /**
  * @class Transacao

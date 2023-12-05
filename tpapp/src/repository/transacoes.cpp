@@ -1,24 +1,24 @@
 #include "repository/bibliotecas.hpp"
-#include "repository/transacoes.hpp"
-#include "repository/jogos.hpp"
-#include "repository/usuarios.hpp"
 #include "repository/desenvolvedores.hpp"
+#include "repository/jogos.hpp"
+#include "repository/transacoes.hpp"
+#include "repository/usuarios.hpp"
 
-#include "service/transacao.hpp"
 #include "service/carteira.hpp"
 #include "service/jogo.hpp"
+#include "service/transacao.hpp"
 
 #include "model/usuario.hpp"
 
-#include "ui/loja.hpp"
 #include "ui/biblioteca_menu.hpp"
+#include "ui/loja.hpp"
 #include "ui/menu.hpp"
 
+#include <chrono>
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
-#include <chrono>
 
 namespace tpapp::repository {
 

@@ -1,11 +1,11 @@
+#include "model/usuario.hpp"
+
 #include "repository/avaliacoes.hpp"
 
 #include "service/avaliacao.hpp"
 
-#include "model/usuario.hpp"
-
-#include <fstream>
 #include <algorithm>
+#include <fstream>
 #include <vector>
 
 namespace tpapp::repository {

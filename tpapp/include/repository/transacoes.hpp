@@ -1,13 +1,14 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <vector>
+#include "model/usuario.hpp"
 
 #include "service/transacao.hpp"
 #include "service/jogo.hpp"
 
-#include "model/usuario.hpp"
+
+#include <iostream>
+#include <string>
+#include <vector>
 
 /**
  * @class Transacoes

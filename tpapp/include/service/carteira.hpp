@@ -1,9 +1,10 @@
 #pragma once
 
+#include "service/transacao.hpp"
+
 #include <iostream>
 #include <string>
 #include <vector>
-#include "service/transacao.hpp"
 
 /**
  * @class Carteira

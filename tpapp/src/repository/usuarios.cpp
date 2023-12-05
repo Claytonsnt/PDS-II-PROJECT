@@ -1,10 +1,10 @@
-#include "repository/usuarios.hpp"
 #include "model/usuario.hpp"
 
+#include "repository/usuarios.hpp"
+
+#include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <algorithm>
-
 
 namespace tpapp::repository {
 

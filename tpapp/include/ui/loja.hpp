@@ -1,12 +1,14 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
-#include <string>
+#include "model/usuario.hpp"
+
+#include "service/jogo.hpp"
 
 #include "ui/menu.hpp"
-#include "model/usuario.hpp"
-#include "service/jogo.hpp"
+
+#include <iostream>
+#include <string>
+#include <vector>
 
 /**
  * @class Loja

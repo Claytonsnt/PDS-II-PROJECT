@@ -1,9 +1,10 @@
 #pragma once
 
-#include <iostream>
-#include <fstream>
-#include <vector>
 #include "model/usuario.hpp"
+
+#include <fstream>
+#include <iostream>
+#include <vector>
 
 /**
  * @class Usuarios

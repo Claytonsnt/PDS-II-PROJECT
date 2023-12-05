@@ -1,9 +1,10 @@
 #include "repository/jogos.hpp"
+
 #include "service/jogo.hpp"
 
+#include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <algorithm>
 
 namespace tpapp::repository {
 

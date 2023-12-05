@@ -1,9 +1,10 @@
 #pragma once
 
+#include "service/jogo.hpp"
+
 #include <iostream>
 #include <string>
 #include <vector>
-#include "service/jogo.hpp"
 
 /**
  * @class Lojas

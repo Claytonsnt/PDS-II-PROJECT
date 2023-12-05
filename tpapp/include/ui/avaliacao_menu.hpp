@@ -1,9 +1,11 @@
 #pragma once
 
-#include "service/jogo.hpp"
 #include "model/usuario.hpp"
-#include "ui/menu.hpp"
+
+#include "service/jogo.hpp"
 #include "service/avaliacao.hpp"
+
+#include "ui/menu.hpp"
 
 #include <iostream>
 #include <string>

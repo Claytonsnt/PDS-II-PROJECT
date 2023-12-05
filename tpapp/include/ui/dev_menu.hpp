@@ -1,11 +1,12 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
-#include <string>
+#include "model/desenvolvedor.hpp"
 
 #include "ui/menu.hpp"
-#include "model/desenvolvedor.hpp"
+
+#include <iostream>
+#include <string>
+#include <vector>
 
 /**
  * @class DevMenu
