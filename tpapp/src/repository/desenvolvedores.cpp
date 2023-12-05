@@ -1,9 +1,10 @@
-#include "repository/desenvolvedores.hpp"
 #include "model/desenvolvedor.hpp"
 
+#include "repository/desenvolvedores.hpp"
+
+#include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <algorithm>
 #include <map>
 
 namespace tpapp::repository {

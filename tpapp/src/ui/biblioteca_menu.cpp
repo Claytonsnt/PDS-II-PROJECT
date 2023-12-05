@@ -1,22 +1,22 @@
-#include "ui/biblioteca_menu.hpp"
-#include "ui/dev_menu.hpp"
-#include "ui/loja.hpp"
-#include "ui/avaliacao_menu.hpp"
+#include "model/desenvolvedor.hpp"
+#include "model/usuario.hpp"
+
+#include "repository/bibliotecas.hpp"
+#include "repository/desenvolvedores.hpp"
+#include "repository/jogos.hpp"
+#include "repository/usuarios.hpp"
 
 #include "service/jogo.hpp"
 
-#include "model/usuario.hpp"
-#include "model/desenvolvedor.hpp"
+#include "ui/avaliacao_menu.hpp"
+#include "ui/biblioteca_menu.hpp"
+#include "ui/dev_menu.hpp"
+#include "ui/loja.hpp"
 
-#include "repository/usuarios.hpp"
-#include "repository/desenvolvedores.hpp"
-#include "repository/jogos.hpp"
-#include "repository/bibliotecas.hpp"
-
+#include <algorithm>
+#include <fstream>
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <algorithm>
 
 namespace tpapp::ui {
     Biblioteca::Biblioteca(model::Usuario const &usuario) : _usuario(usuario) {

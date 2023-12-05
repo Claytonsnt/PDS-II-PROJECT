@@ -1,5 +1,6 @@
 #include "ui/menu.hpp"
-#include<iostream>
+
+#include <iostream>
 
 namespace tpapp::ui {
 

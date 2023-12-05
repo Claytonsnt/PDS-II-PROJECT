@@ -1,20 +1,19 @@
-#include "ui/loja.hpp"
-#include "ui/biblioteca_menu.hpp"
-#include "ui/dev_menu.hpp"
-#include "ui/avaliacao_menu.hpp"
+#include "model/desenvolvedor.hpp"
+#include "model/usuario.hpp"
+
+#include "repository/desenvolvedores.hpp"
+#include "repository/jogos.hpp"
+#include "repository/lojas.hpp"
+#include "repository/transacoes.hpp"
+#include "repository/usuarios.hpp"
 
 #include "service/jogo.hpp"
 #include "service/transacao.hpp"
 
-#include "model/usuario.hpp"
-#include "model/desenvolvedor.hpp"
-
-#include "repository/usuarios.hpp"
-#include "repository/desenvolvedores.hpp"
-#include "repository/jogos.hpp"
-#include "repository/transacoes.hpp"
-#include "repository/lojas.hpp"
-
+#include "ui/avaliacao_menu.hpp"
+#include "ui/biblioteca_menu.hpp"
+#include "ui/dev_menu.hpp"
+#include "ui/loja.hpp"
 
 #include <iostream>
 #include <string>

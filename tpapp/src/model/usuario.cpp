@@ -1,7 +1,7 @@
 #include "model/usuario.hpp"
 
-#include <string>
 #include <iostream>
+#include <string>
 
 namespace tpapp:: model {
 Usuario::Usuario(int usuario_id, std::string usuario_login, std::string senha, std::string email, InfoPessoal info, bool desenvolvedor, unsigned saldo): _usuario_id(usuario_id), _usuario_login(usuario_login), _senha(senha), _email(email), _info(info), _desenvolvedor(desenvolvedor), _saldo(saldo) {}
